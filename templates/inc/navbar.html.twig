@@ -1,0 +1,68 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('portada') }}">
+                <img src="{{ asset('img/logoAplicacion.png') }}" alt="" width="30px"/>
+                Despiece
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li {% if app.request.get('_route') == 'portada' %}class="active"{% endif %}><a
+                            href="{{ path('portada') }}">{{ 'menu.inicio' | trans }}</a></li>
+                <li {% if app.request.get('_route') == 'coches' %}class="active"{% endif %}><a href="{{ path('coches') }}">{{ 'menu.coches' | trans | upper }}</a></li>
+                <li {% if app.request.get('_route') == 'motos' %}class="active"{% endif %}><a href="{{ path('motos') }}">{{ 'menu.motos' | trans | upper }}</a></li>
+                {#{% if app.user %}#}
+                    <li {% if app.request.get('_route')[0:8] == 'programa' %}class="active"{% endif %}><a href="{{ path('programa') }}">{{ 'menu.software' | trans | upper }}</a></li>
+                {#{% endif %}#}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if not app.user %}
+                    <li {% if app.request.get('_route') == 'fos_user_security_login' %}class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">{{ 'menu.login' | trans }}</a></li>
+                    <li {% if app.request.get('_route') == 'fos_user_registration_register' %}class="active"{% endif %}><a href="{{ path('fos_user_registration_register') }}">{{ 'menu.registrarse' | trans }}</a></li>
+                {% else %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{app.user}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-user"></i> {{ 'menu.perfil' | trans | capitalize }}</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-asterisk"></i> {{ 'change_password.submit' | trans({}, 'FOSUserBundle') | capitalize }}</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> {{ 'menu.logout' | trans | capitalize }}</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {% if app.request.locale == 'es' %}
+                                <i class="flag es"></i> 
+                            {% elseif app.request.locale == 'en' %}
+                                <i class="flag gb"></i> 
+                            {% elseif app.request.locale == 'fr' %}
+                                <i class="flag fr"></i> 
+                            {% elseif app.request.locale == 'ca' %}
+                                <i class="flag catalonia"></i>                             
+                            {% elseif app.request.locale == 'pt' %}
+                                <i class="flag pt"></i> 
+                            {% else %}
+                            {% endif %}
+                            {{ app.request.locale | capitalize}}<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% set ruta = app.request.get('_route') %}
+
+                            <li {% if app.request.locale == 'es' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'es'}) }}"><i class="flag es"></i> Español</a></li>
+                            <li {% if app.request.locale == 'en' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'en'}) }}"><i class="flag gb"></i> English</a></li>
+                            <li {% if app.request.locale == 'ca' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'ca'}) }}"><i class="flag catalonia"></i> Català</a></li>
+                            <li {% if app.request.locale == 'fr' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'fr'}) }}"><i class="flag fr"></i> Français</a></li>
+                            <li {% if app.request.locale == 'pt' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'pt'}) }}"><i class="flag pt"></i> Português</a></li>
+                        </ul>
+                    </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>

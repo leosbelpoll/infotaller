@@ -1,0 +1,50 @@
+<table class="tablaVehiculos table table-hover">
+    <thead>
+        <th></th>
+        <th>{{ 'marca' | trans }}</th>
+        <th>{{ 'modelo' | trans }}</th>
+        <th>{{ 'anno' | trans }}</th>
+    </thead>
+    <tbody>
+        {% for vehiculo in vehiculos %}
+        <tr>
+            {% set imagen = render(controller('AppBundle:File:findImagenVehiculo', {vehiculo: vehiculo.datos.id })) %}
+            <td width="130px">
+                {% if imagen != '' %}
+                <!-- <a href="#"><img src="{{ asset('img/vehiculos/' ~ imagen) }}" alt="{{ imagen }}" width="70px"/></a> -->
+                <a href="{{ path('busquedaDirectaVehiculo', {'vehiculo': vehiculo.datos.id, 'apartado':0}) }}">
+                    <img src="{{ asset('img/vehiculos/img1.jpg') }}" alt="{{ imagen }}" width="70px" />
+                </a>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ path('busquedaDirectaVehiculo', {'vehiculo': vehiculo.datos.id, 'apartado':0}) }}">{{ vehiculo.datos.marca.name }}</a>
+            </td>
+            <td>
+                <a href="{{ path('busquedaDirectaVehiculo', {'vehiculo': vehiculo.datos.id, 'apartado':0}) }}">{{ vehiculo.datos.modelo }}</a>
+
+                <p class="especificacionesVehiculos">
+                    {% if vehiculo.archivos.fichaTecnica is not null %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 7}) }}">{{ 'ficha.tecnica' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.imagenes | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 0}) }}">{{ 'foto' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.manualesTaller | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 1}) }}">{{ 'manuales.taller' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.manualesUsuario | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 2}) }}">{{ 'manuales.usuarios' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.esquemasElectricos | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 3}) }}">{{ 'esquema.electrico' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.despieces | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 4}) }}">{{ 'despiece' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.videos | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 5}) }}">{{ 'video' | trans}}</a>
+                    {% endif %} {% if vehiculo.archivos.catalogos | length > 0 %}
+                        <a href="{{ path('busquedaDirectaVehiculo', {vehiculo: vehiculo.datos.id, apartado: 6}) }}">{{ 'catalogo' | trans}}</a>
+                    {% endif %}
+                </p>
+            </td>
+            <td>{{ vehiculo.datos.creacion | date('Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

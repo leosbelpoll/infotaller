@@ -1,18 +1,101 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <h1>Testing Vesta behavior with Symfony 4.2</h1>
-        <ul>
-            <li><a href="{{path('home')}}">Go HOME</a></li>
-            <li><a href="{{path('class_vehicle_index')}}">Go classes</a></li>
-            <li><a href="{{path('contact')}}">Go contact</a></li>
-        </ul>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="es_Es">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Bienvenido - Despiece{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logoAplicacion.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
+    {#<link rel="stylesheet" href="{{ asset('vendor/uploadfile.css') }}"/>#}
+
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('vendor/jquery/css/jquery.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('vendor/offcanvas.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('vendor/alertify/css/alertify.core.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/alertify/css/alertify.bootstrap.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/flags/flags.css') }}"/>
+    <link rel="stylesheet/less" href="{{ asset('css/estilosGenerales.less') }}"/>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+{% include 'inc/navbar.html.twig' %}
+
+{% block body %}{% endblock %}
+
+
+{% include 'inc/footer.html.twig' %}
+
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//localhost/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Piwik Code -->
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="{{ asset('vendor/jquery/js/jquery.js') }}"></script>
+
+
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/less.min.js') }}"></script>
+
+<script src="{{ asset('vendor/alertify/js/alertify.js') }}"></script>
+
+<script src="{{ asset('js/pantallaCargando.js') }}"></script>
+<script src="{{ asset('js/validaciones.js') }}"></script>
+<script>
+
+    var correo = '';
+
+    $(function () {
+
+        $('a.contacto').click(function () {
+            correo = $(this).text();
+            $('#nombre_contacto').focus();
+        });
+
+        $('#btn-enviar-contacto').click(function () {
+            if (estaVacio($('#nombre_contacto').val()) || estaVacio($('#titulo_contacto').val()) || estaVacio($('#mensaje_contacto').val())) {
+                alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
+                return false;
+            }
+
+            if (esSoloEspacios($('#nombre_contacto').val()) || esSoloEspacios($('#titulo_contacto').val()) || esSoloEspacios($('#mensaje_contacto').val())) {
+                alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
+                return false;
+            }
+
+            $('#para_contacto').val(correo);
+
+            $.ajax({
+                url: $('#form-contacto').attr('action'),
+                data: $('#form-contacto').serialize(),
+                method: 'post'
+            }).success(function (data) {
+                $('#modal_contacto').modal('hide');
+                alertify.success('{{ 'mensaje.enviado' | trans }}');
+            }).error(function (data) {
+                alertify.error('{{ 'mensaje.no.enviado' | trans }}');
+            });
+        });
+
+    });
+</script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

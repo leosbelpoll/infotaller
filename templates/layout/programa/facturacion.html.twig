@@ -1,0 +1,20 @@
+{% extends 'layout/programa.html.twig' %}
+{% block submenu %}
+    <ul class="submenu-programa">
+        <a href="{{ path('programa_submenu_or_factura') }}">
+            <li>{{ 'submenu.or.factura' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_ventas') }}">
+            <li>{{ 'submenu.ventas' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_ventas_rapidas') }}">
+            <li>{{ 'submenu.ventas.rapidas' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_pedidos') }}">
+            <li>{{ 'submenu.pedidos' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_caja') }}">
+            <li>{{ 'submenu.caja' | trans }}</li>
+        </a>
+    </ul>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout/programa.html.twig' %}
+{% block submenu %}
+    <ul class="submenu-programa">
+        <a href="{{ path('programa_submenu_clientes') }}">
+            <li>{{ 'submenu.clientes' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_vehiculos') }}">
+            <li>{{ 'submenu.vehiculos' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_proveedores') }}">
+            <li>{{ 'submenu.proveedores' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_empleados') }}">
+            <li>{{ 'submenu.empleados' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_recambios') }}">
+            <li>{{ 'submenu.recambios' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_venta') }}">
+            <li>{{ 'submenu.compra.venta' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_tecnica') }}">
+            <li>{{ 'submenu.ficha.tecnica' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_transportista') }}">
+            <li>{{ 'submenu.transportista' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_vehiculos') }}">
+            <li>{{ 'submenu.listado.vehiculos' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_matriculas') }}">
+            <li>{{ 'submenu.matriculas' | trans }}</li>
+        </a>
+        <a href="{{ path('programa_submenu_maquinaria') }}">
+            <li>{{ 'submenu.maquinaria' | trans }}</li>
+        </a>
+    </ul>
+{% endblock %}

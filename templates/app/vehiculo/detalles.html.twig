@@ -1,0 +1,436 @@
+{% if imagenes|length == 0 and manualesTaller|length == 0 and manualesUsuario|length == 0 and esquemasElectricos|length
+== 0 and despieces|length == 0 and videos|length == 0 and catalogos|length == 0 and fichaTecnica is null %}
+    <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
+    <hr>
+{% else %}
+<div class="panel-group" id="accordion">
+
+    {% if imagenes|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseImagenes">
+                    <i class="fa fa-picture-o"></i> {{ 'imagenes' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseImagenes" class="panel-collapse collapse {% if apartado is not defined %} in {% elseif apartado == 0 %} in {% endif %}">
+            <div class="panel-body">
+                <div class="fb-album-container">
+                    {% for imagen in imagenes %}
+                        {#<img src="{{ asset('files/vehiculos/' ~ imagen.name) }}" alt="Imagen" class="img-detalles" />#}
+                        <img src="{{ asset('img/vehiculos/img1.jpg') }}" alt="Imagen" class="img-detalles" />
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if manualesTaller|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseManualesTaller">
+                    <i class="fa fa-book"></i> {{ 'manuales.taller' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseManualesTaller" class="panel-collapse collapse {% if apartado is defined and apartado == 1 %} in {% endif %}">
+            <div class="panel-body">
+                {% if manualesTaller.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for manual in manualesTaller.ingles %}
+                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                    <span>{{ manual.titulo }}</span>
+                </a>
+                {% endfor %} {% endif %} {% if manualesTaller.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for manual in manualesTaller.espannol %}
+                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                    <span>{{ manual.titulo }}</span>
+                </a>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if manualesUsuario|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseManualesUsuario">
+                    <i class="fa fa-book"></i> {{ 'manuales.usuarios' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseManualesUsuario" class="panel-collapse collapse {% if apartado is defined and apartado == 2 %} in {% endif %}">
+            <div class="panel-body">
+                {% if manualesUsuario.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for manual in manualesUsuario.ingles %}
+                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                    <span>{{ manual.titulo }}</span>
+                </a>
+                {% endfor %} {% endif %} {% if manualesUsuario.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for manual in manualesUsuario.espannol %}
+                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                    <span>{{ manual.titulo }}</span>
+                </a>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if esquemasElectricos|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseEsquemasElectricos">
+                    <i class="fa fa-bolt"></i> {{ 'esquema.electrico' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseEsquemasElectricos" class="panel-collapse collapse {% if apartado is defined and apartado == 3 %} in {% endif %}">
+            <div class="panel-body">
+                {% if esquemasElectricos.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for esquema in esquemasElectricos.ingles %}
+                <div class="img-bg-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ esquema.name) }}">
+                        <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
+                        <span>{{ esquema.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %} {% if esquemasElectricos.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for esquema in esquemasElectricos.espannol %}
+                <div class="img-bg-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ esquema.name) }}">
+                        <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
+                        <span>{{ esquema.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if despieces|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseDespieces">
+                    <i class="fa fa-cogs"></i> {{ 'despiece' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseDespieces" class="panel-collapse collapse {% if apartado is defined and apartado == 4 %} in {% endif %}">
+            <div class="panel-body">
+                {% if despieces.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for despiece in despieces.ingles %}
+                <div class="img-bg-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ despiece.name) }}">
+                        <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
+                        <span>{{ despiece.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %} {% if despieces.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for despiece in despieces.espannol %}
+                <div class="img-bg-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ despiece.name) }}">
+                        <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
+                        <span>{{ despiece.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if videos|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseVideos">
+                    <i class="fa fa-film"></i> {{ 'video' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseVideos" class="panel-collapse collapse {% if apartado is defined and apartado == 5 %} in {% endif %}">
+            <div class="panel-body">
+                {% if videos.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for video in videos.ingles %}
+                <div class="manual-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ video.name) }}">
+                        <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
+                        <span>{{ video.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %} {% if videos.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for video in videos.espannol %}
+                <div class="manual-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ video.name) }}">
+                        <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
+                        <span>{{ video.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if catalogos|length != 0 %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseCatalogos">
+                    <i class="fa fa-book"></i> {{ 'catalogo' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseCatalogos" class="panel-collapse collapse {% if apartado is defined and apartado == 6 %} in {% endif %}">
+            <div class="panel-body">
+                {% if catalogos.ingles is defined %}
+                <div class="cabecera-idioma">
+                    <h4>English</h4>
+                    <hr/>
+                </div>
+                {% for catalogo in catalogos.ingles %}
+                <div class="manual-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ catalogo.name) }}">
+                        <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
+                        <span>{{ catalogo.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %} {% if catalogos.espannol is defined %}
+                <div class="cabecera-idioma">
+                    <h4>Español</h4>
+                    <hr/>
+                </div>
+                {% for catalogo in catalogos.espannol %}
+                <div class="manual-detalles">
+                    <a href="{{ asset('files/vehiculos/' ~ catalogo.name) }}">
+                        <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
+                        <span>{{ catalogo.titulo }}</span>
+                    </a>
+                </div>
+                {% endfor %} {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if fichaTecnica is not null %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" href="#collapseFichaTecnica">
+                    <i class="fa fa-list-ul"></i> {{ 'ficha.tecnica' | trans }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseFichaTecnica" class="panel-collapse collapse {% if apartado is defined and apartado == 7 %} in {% endif %}">
+            <div class="panel-body">
+                <table class="table tabla-ficha-tecnica">
+                    <tr>
+                        <th>{{ 'ficha.tecnica.posicion.motor' | trans }}</th>
+                        <td>{{fichaTecnica.pocisionMotor}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.distribucion' | trans }}</th>
+                        <td>{{fichaTecnica.distribucion}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.numero.cilindros' | trans }}</th>
+                        <td>{{fichaTecnica.numeroCilindros}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.valvulas.cilindros' | trans }}</th>
+                        <td>{{fichaTecnica.valvulaCilindro}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.cilindrada' | trans }}</th>
+                        <td>{{fichaTecnica.cilindrada}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.potencia.maxima' | trans }}</th>
+                        <td>{{fichaTecnica.potenciaMaxima}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.motor.maxima' | trans }}</th>
+                        <td>{{fichaTecnica.parMotorMaxima}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.diametro.carrera' | trans }}</th>
+                        <td>{{fichaTecnica.diametroCarrera}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.alimentacion' | trans }}</th>
+                        <td>{{fichaTecnica.alimentacion}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.caja.cambio' | trans }}</th>
+                        <td>{{fichaTecnica.cajaCambio}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.desarrollos' | trans }}</th>
+                        <td>{{fichaTecnica.desarrollos}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.marcha.atras' | trans }}</th>
+                        <td>{{fichaTecnica.marchaAtras}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.grupo.final' | trans }}</th>
+                        <td>{{fichaTecnica.grupoFinal}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.traccion' | trans }}</th>
+                        <td>{{fichaTecnica.traccion}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.suspencion.delantera' | trans }}</th>
+                        <td>{{fichaTecnica.suspensionDelantera}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.suspencion.trasera' | trans }}</th>
+                        <td>{{fichaTecnica.suspensionTrasera}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.frenos.delanteros' | trans }}</th>
+                        <td>{{fichaTecnica.frenosDelanteros}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.frenos.traseros' | trans }}</th>
+                        <td>{{fichaTecnica.frenosTraseros}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.neumaticos' | trans }}</th>
+                        <td>{{fichaTecnica.neumaticos}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.llantas' | trans }}</th>
+                        <td>{{fichaTecnica.llantas}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.tipo.direccion' | trans }}</th>
+                        <td>{{fichaTecnica.tipoDireccion}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.radio.giro' | trans }}</th>
+                        <td>{{fichaTecnica.radioGiro}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.vueltas.volante' | trans }}</th>
+                        <td>{{fichaTecnica.vueltasVolanteTope}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.largo' | trans }}</th>
+                        <td>{{fichaTecnica.largo}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.ancho' | trans }}</th>
+                        <td>{{fichaTecnica.ancho}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.alto' | trans }}</th>
+                        <td>{{fichaTecnica.alto}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.distancia.ejes' | trans }}</th>
+                        <td>{{fichaTecnica.distanciaEjes}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.via.delantera' | trans }}</th>
+                        <td>{{fichaTecnica.viaDelantera}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.via.trasera' | trans }}</th>
+                        <td>{{fichaTecnica.viaTrasera}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.peso' | trans }}</th>
+                        <td>{{fichaTecnica.peso}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.capacidad.maletero' | trans }}</th>
+                        <td>{{fichaTecnica.capacidadMaletero}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.deposito.combustible' | trans }}</th>
+                        <td>{{fichaTecnica.depositoCombustible}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.velocidad.maxima' | trans }}</th>
+                        <td>{{fichaTecnica.velocidadMaxima}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.aceleracion' | trans }}</th>
+                        <td>{{fichaTecnica.aceleracion}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.consumo.urbano' | trans }}</th>
+                        <td>{{fichaTecnica.consumoUrbano}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.consumo.extraurbano' | trans }}</th>
+                        <td>{{fichaTecnica.consumoExtraurbano}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.consumo.medio' | trans }}</th>
+                        <td>{{fichaTecnica.consumoMedio}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.emisiones.co2' | trans }}</th>
+                        <td>{{fichaTecnica.emisiones}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'ficha.tecnica.combustible' | trans }}</th>
+                        <td>{{fichaTecnica.combustible}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endif %}

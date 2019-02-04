@@ -1,0 +1,10 @@
+{% extends 'layout/email.html.twig' %}
+
+{% block body %}
+    <h3 style="font-weight: normal;margin: 10px 0;">{{ nombre }}</h3>
+    <h4 style="font-weight: normal;margin: 10px 0;">{{ email }}</h4>
+    <hr style="border: none; border-top: solid 1px #d1d1d1;"/>
+    <p>
+        {{ mensaje  | nl2br}}
+    </p>
+{% endblock %}

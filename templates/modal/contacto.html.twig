@@ -1,0 +1,33 @@
+{% extends 'layout/modal.html.twig' %}
+
+{% block id %}modal_contacto{% endblock %}
+
+{% block header %}
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{ 'contacto' | trans }}</h4>
+{% endblock %}
+
+{% block body %}
+    <form action="{{ path('crear_email') }}" method="post" class="form-contacto" id="form-contacto">
+        <input type="hidden" name="tipo_email" value="contacto" />
+        <input type="hidden" id="para_contacto" name="para_contacto" value="" />
+        <input type="text" id="nombre_contacto" name="nombre_contacto" value="" required
+               class="form-control" placeholder="{{ 'nombre'|trans }}"/>
+        <br/>
+        <input type="text" id="titulo_contacto" name="titulo_contacto" value="" required
+               class="form-control" placeholder="{{ 'titulo'|trans }}"/>
+        <br/>
+        <textarea id="mensaje_contacto" name="mensaje_contacto" value="" required
+                  class="form-control" placeholder="{{ 'mensaje'|trans }}"></textarea>
+        <hr class="verificacion-robots"/>
+        <label for="verificacion" class="verificacion-robots">{{ 'verificacion.robots' | trans }}</label>
+        <input name="verificacion_robots" class="verificacion-robots form-control" />
+        <div class="g-recaptcha" data-sitekey="6LeNDzsUAAAAAF3eHINBG760-PLtVl374edsvihK"></div>
+        <br/>
+    </form>
+{% endblock %}
+
+{% block botones %}
+    <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'cancelar' | trans }}</button>
+    <button type="button" class="btn btn-primary" id="btn-enviar-contacto">{{ 'enviar' | trans }}</button>
+{% endblock %}
