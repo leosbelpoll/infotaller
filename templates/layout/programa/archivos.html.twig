@@ -1,37 +1,38 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
+    {% set grupo = 'archivos' %}
     <ul class="submenu-programa">
-        <a href="{{ path('programa_submenu_clientes') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'clientes'}) }}">
             <li>{{ 'submenu.clientes' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_vehiculos') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'vehiculos'}) }}">
             <li>{{ 'submenu.vehiculos' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_proveedores') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'proveedores'}) }}">
             <li>{{ 'submenu.proveedores' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_empleados') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'empleados'}) }}">
             <li>{{ 'submenu.empleados' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_recambios') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'recambios'}) }}">
             <li>{{ 'submenu.recambios' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_venta') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'compra_venta'}) }}">
             <li>{{ 'submenu.compra.venta' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_tecnica') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'ficha_tecnica'}) }}">
             <li>{{ 'submenu.ficha.tecnica' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_transportista') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'transportista'}) }}">
             <li>{{ 'submenu.transportista' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_vehiculos') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'listado_vehiculos'}) }}">
             <li>{{ 'submenu.listado.vehiculos' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_matriculas') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'matriculas'}) }}">
             <li>{{ 'submenu.matriculas' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_maquinaria') }}">
+        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'maquinaria'}) }}">
             <li>{{ 'submenu.maquinaria' | trans }}</li>
         </a>
     </ul>

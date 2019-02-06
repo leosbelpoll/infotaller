@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -17,22 +17,5 @@ class User extends BaseUser
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     protected $id;
-
-    /**
-     * @ORM\Column(type="string", length=5)
-     */
-    protected $locale;
-
-    public function getLocale(): ?string
-    {
-        return $this->locale;
-    }
-
-    public function setLocale(string $locale): self
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
 
 }

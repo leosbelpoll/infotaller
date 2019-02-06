@@ -18,7 +18,7 @@
                 <li {% if app.request.get('_route') == 'coches' %}class="active"{% endif %}><a href="{{ path('coches') }}">{{ 'menu.coches' | trans | upper }}</a></li>
                 <li {% if app.request.get('_route') == 'motos' %}class="active"{% endif %}><a href="{{ path('motos') }}">{{ 'menu.motos' | trans | upper }}</a></li>
                 {#{% if app.user %}#}
-                    <li {% if app.request.get('_route')[0:8] == 'programa' %}class="active"{% endif %}><a href="{{ path('programa') }}">{{ 'menu.software' | trans | upper }}</a></li>
+                    <li {% if app.request.get('_route')[0:7] == 'program' %}class="active"{% endif %}><a href="{{ path('program') }}">{{ 'menu.software' | trans | upper }}</a></li>
                 {#{% endif %}#}
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -52,13 +52,14 @@
                             {{ app.request.locale | capitalize}}<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            {% set ruta = app.request.get('_route') %}
+                            {% set ruta = app.request.pathInfo |replace({'/': '**'}) %}
+                            
 
-                            <li {% if app.request.locale == 'es' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'es'}) }}"><i class="flag es"></i> Español</a></li>
-                            <li {% if app.request.locale == 'en' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'en'}) }}"><i class="flag gb"></i> English</a></li>
-                            <li {% if app.request.locale == 'ca' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'ca'}) }}"><i class="flag catalonia"></i> Català</a></li>
-                            <li {% if app.request.locale == 'fr' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'fr'}) }}"><i class="flag fr"></i> Français</a></li>
-                            <li {% if app.request.locale == 'pt' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'idioma':'pt'}) }}"><i class="flag pt"></i> Português</a></li>
+                            <li {% if app.request.locale == 'es' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'es'}) }}"><i class="flag es"></i> Español</a></li>
+                            <li {% if app.request.locale == 'en' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'en'}) }}"><i class="flag gb"></i> English</a></li>
+                            <li {% if app.request.locale == 'ca' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'ca'}) }}"><i class="flag catalonia"></i> Català</a></li>
+                            <li {% if app.request.locale == 'fr' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'fr'}) }}"><i class="flag fr"></i> Français</a></li>
+                            <li {% if app.request.locale == 'pt' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'pt'}) }}"><i class="flag pt"></i> Português</a></li>
                         </ul>
                     </li>
             </ul>

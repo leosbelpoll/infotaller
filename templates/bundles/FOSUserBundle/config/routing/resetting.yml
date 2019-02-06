@@ -1,0 +1,21 @@
+#Resetting
+
+fos_user_resetting_request:
+    locales:  { ca: "/request", pt: "/request", en: "/request", fr: "/demande", es: "/solicitud" }
+    defaults: { _controller: FOSUserBundle:Resetting:request }
+    methods: [GET]
+
+fos_user_resetting_send_email:
+    locales:  { ca: "/send-email", pt: "/send-email", en: "/send-email", fr: "/envoyer-email", es: "/enviar-correo" }
+    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    methods: [POST]
+
+fos_user_resetting_check_email:
+    locales:  { ca: "/check-email", pt: "/check-email", en: "/check-email", fr: "/controler-email", es: "/chequear-correo" }
+    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
+    methods: [GET]
+
+fos_user_resetting_reset:
+    locales:  { ca: "/{token}", pt: "/{token}", en: "/{token}", fr: "/{token}", es: "/{token}" }
+    defaults: { _controller: FOSUserBundle:Resetting:reset }
+    methods: [GET, POST]

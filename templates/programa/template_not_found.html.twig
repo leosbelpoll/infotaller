@@ -1,0 +1,15 @@
+{% extends 'layout/programa/' ~ grupo ~ '.html.twig' %}
+
+{% block contenido %}
+    <h2>Esta plantilla se está mostrando porque no existe la vista aún para este menú</h2>
+    <h3>Para crearla siga los siguientes pasos:</h3>
+    <ul>
+        <li>Cree el archivo <code>templates/{{grupo}}/{{pagina}}.html.twig</code> </li>
+        <li>Copie el contenido base:
+            <p><code>{{ "{% extends 'layout/programa/" ~ grupo ~ ".html.twig' %}" }}</code></p>
+            <p><code>{{ "{% block contenido %}" }}</code></p>
+            <p><code>{{ "// Contenido HTML deseado"}}</code></p>
+            <p><code>{{ "{% endblock %}" }}</code></p>
+        </li>
+    </ul>
+{% endblock %}

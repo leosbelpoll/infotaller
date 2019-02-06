@@ -1,40 +1,40 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
     <ul class="submenu-programa">
-        <a href="{{ path('programa_submenu_registro_vehiculo') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.registro.vehiculo' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_operaciones_mano') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'operacion_mano_obra'}) }}">
             <li>{{ 'submenu.operaciones.mano.obra' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_familia_recambio') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'familia_recambio'}) }}">
             <li>{{ 'submenu.familia.recambio' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_marcas_recambios') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'marca_recambio'}) }}">
             <li>{{ 'submenu.marcas.recambios' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_departamentos_taller') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'departamentos_taller'}) }}">
             <li>{{ 'submenu.departamentos.taller' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_comentarios') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'comentarios'}) }}">
             <li>{{ 'submenu.comentarios' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_numeros_documentos') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'numeros_documentos'}) }}">
             <li>{{ 'submenu.numeros.documentos' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_formas_pago') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'formas_pago'}) }}">
             <li>{{ 'submenu.formas.pago' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_permisos') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'permisos'}) }}">
             <li>{{ 'submenu.permisos' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_talonarios') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'talonarios'}) }}">
             <li>{{ 'submenu.talonarios' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_copia_seguridad') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'seguridad'}) }}">
             <li>{{ 'submenu.copia.seguridad' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_seguridad_formularios') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'formularios'}) }}">
             <li>{{ 'submenu.seguridad.formularios' | trans }}</li>
         </a>
     </ul>

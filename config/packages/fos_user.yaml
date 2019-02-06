@@ -3,8 +3,16 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
+        # TODO: change this email address
         address: "change_this_email@gmail.com"
         sender_name: "Despiece team"
+    service:
+        mailer: fos_user.mailer.twig_swift
+    use_username_form_type: false
     registration:
         confirmation:
             enabled: true
+            template: '@FOSUser/Registration/email.email.twig'
+    resetting:
+        email:
+            template: '@FOSUser/Resetting/email.email.twig'

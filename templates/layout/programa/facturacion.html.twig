@@ -1,19 +1,19 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
     <ul class="submenu-programa">
-        <a href="{{ path('programa_submenu_or_factura') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.or.factura' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_ventas') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.ventas' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_ventas_rapidas') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.ventas.rapidas' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_pedidos') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.pedidos' | trans }}</li>
         </a>
-        <a href="{{ path('programa_submenu_caja') }}">
+        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
             <li>{{ 'submenu.caja' | trans }}</li>
         </a>
     </ul>

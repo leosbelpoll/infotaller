@@ -594,96 +594,96 @@
             </trans-unit>
             <trans-unit id="3010028">
                 <source>ficha.tecnica.vueltas.volante</source>
-                <target>Vueltas de volante de tope a tope</target>
+                <target>Top-to-top steering wheel turns</target>
             </trans-unit>
             <trans-unit id="3010029">
                 <source>ficha.tecnica.largo</source>
-                <target>Largo (milímetros)</target>
+                <target>Length (mm)</target>
             </trans-unit>
             <trans-unit id="3010030">
                 <source>ficha.tecnica.ancho</source>
-                <target>Ancho (milímetros)</target>
+                <target>Width (millimeters)</target>
             </trans-unit>
             <trans-unit id="3010031">
                 <source>ficha.tecnica.alto</source>
-                <target>Alto (milímetros)</target>
+                <target>High (millimeters)</target>
             </trans-unit>
             <trans-unit id="3010032">
                 <source>ficha.tecnica.distancia.ejes</source>
-                <target>Distancia entre ejes (mm)</target>
+                <target>Distance between axes (mm)</target>
             </trans-unit>
             <trans-unit id="3010033">
                 <source>ficha.tecnica.via.delantera</source>
-                <target>Vía delantera (mm)</target>
+                <target>Front track (mm)</target>
             </trans-unit>
             <trans-unit id="3010034">
                 <source>ficha.tecnica.via.trasera</source>
-                <target>Vía trasera (mm)</target>
+                <target>Rear track (mm)</target>
             </trans-unit>
             <trans-unit id="3010035">
                 <source>ficha.tecnica.peso</source>
-                <target>Peso (Kg)</target>
+                <target>Weight (Kg)</target>
             </trans-unit>
             <trans-unit id="3010036">
                 <source>ficha.tecnica.capacidad.maletero</source>
-                <target>Capacidad del maletero</target>
+                <target>Boot capacity</target>
             </trans-unit>
             <trans-unit id="3010037">
                 <source>ficha.tecnica.deposito.combustible</source>
-                <target>Depósito combustible (litros)</target>
+                <target>Fuel tank (liters)</target>
             </trans-unit>
             <trans-unit id="3010038">
                 <source>ficha.tecnica.velocidad.maxima</source>
-                <target>Velocidad máxima (Km/h)</target>
+                <target>Maximum speed (Km / h)</target>
             </trans-unit>
             <trans-unit id="3010039">
                 <source>ficha.tecnica.aceleracion</source>
-                <target>Aceleración de 0-100 Km/h (seg)</target>
+                <target>Acceleration of 0-100 km / h (sec)</target>
             </trans-unit>
             <trans-unit id="3010040">
                 <source>ficha.tecnica.consumo.urbano</source>
-                <target>Consumo urbano</target>
+                <target>Urban consumption</target>
             </trans-unit>
             <trans-unit id="3010041">
                 <source>ficha.tecnica.consumo.extraurbano</source>
-                <target>Consumo extraurbano (l/100 Km)</target>
+                <target>Extra urban consumption (l / 100 km)</target>
             </trans-unit>
             <trans-unit id="3010042">
                 <source>ficha.tecnica.consumo.medio</source>
-                <target>Consumo medio (l/100 Km)</target>
+                <target>Average consumption (l / 100 km)</target>
             </trans-unit>
             <trans-unit id="3010043">
                 <source>ficha.tecnica.emisiones.co2</source>
-                <target>Emisiones de CO2 (gr/Km)</target>
+                <target>CO2 emissions (gr / Km)</target>
             </trans-unit>
             <trans-unit id="3010044">
                 <source>ficha.tecnica.combustible</source>
-                <target>Combustible</target>
+                <target>Gas</target>
             </trans-unit>
 
             <trans-unit id="3010045">
                 <source>registrar.taller</source>
-                <target>Registrar taller</target>
+                <target>Register workshop</target>
             </trans-unit>
             <trans-unit id="3010046">
                 <source>no.hay.resultados</source>
-                <target>No se han encontrado resultados</target>
+                <target>No results found</target>
             </trans-unit>
             <trans-unit id="3010047">
                 <source>error.servidor</source>
-                <target>Ha ocurrido un error en el servidor</target>
+                <target>An error occurred on the server</target>
             </trans-unit>
             <trans-unit id="3010048">
                 <source>contacte.admin</source>
-                <target>Si este error continua póngase en contacto con el administrador</target>
+                <target>If this error continues, contact the administrator</target>
             </trans-unit>
             <trans-unit id="3010049">
                 <source>vehiculo.no.encontrado</source>
-                <target>El vehículo no fue encontrado</target>
+                <target>The vehicle was not found</target>
             </trans-unit>
             <trans-unit id="3010050">
                 <source>elemento.no.encontrado</source>
-                <target>El elemento no fue encontrado</target>
+                <target>The element was not found</target>
             </trans-unit>
 
 	</body>

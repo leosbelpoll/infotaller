@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% if exception.message[0:11] == 'appdespiece' %}
+            <h2 class="texto-grande">{{ exception.message[12:] | trans }}</h2>
+        {% elseif status_code == 404  %}
+            <h2 class="texto-grande">{{'elemento.no.encontrado' | trans}}</h2>
+        {% else %}
+            <h2 class="texto-grande">{{'error.servidor' | trans}}</h2>
+        {% endif %}
+        <span class="texto-pequenno">{{'contacte.admin' | trans}}</span>
+        <hr>
+    </div>
+{% endblock %}

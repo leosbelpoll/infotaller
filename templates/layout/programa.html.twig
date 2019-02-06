@@ -2,26 +2,26 @@
 
 {% block body %}
     <div class="menus-programa">
-        <a class="menu-programa" href="{{ path('programa_configuracion') }}" id="menu-configuracion">
+        <a class="menu-programa" href="{{ path('program', { 'grupo': 'configuracion' }) }}" id="menu-configuracion">
             <img src="{{ asset('img/menu_programa/configuracion.jpg') }}" alt=""/>
             <span>{{ 'menu.configuracion' | trans }}</span>
         </a>
-        <a class="menu-programa" href="{{ path('programa_archivos') }}" id="menu-configuracion">
+        <a class="menu-programa" href="{{ path('program', { 'grupo': 'archivos' }) }}" id="menu-configuracion">
             <img src="{{ asset('img/menu_programa/archivos.jpg') }}" alt=""/>
             <span>{{ 'menu.archivos' | trans }}</span>
         </a>
-        <a class="menu-programa" href="{{ path('programa_facturacion') }}" id="menu-configuracion">
+        <a class="menu-programa" href="{{ path('program', { 'grupo': 'facturacion' }) }}" id="menu-configuracion">
             <img src="{{ asset('img/menu_programa/facturacion.jpg') }}" alt=""/>
             <span>{{ 'menu.facturacion' | trans }}</span>
         </a>
-        <a class="menu-programa" href="{{ path('programa_herramientas') }}" id="menu-configuracion">
+        <a class="menu-programa" href="{{ path('program', { 'grupo': 'herramientas' }) }}" id="menu-configuracion">
             <img src="{{ asset('img/menu_programa/herramientas.jpg') }}" alt=""/>
             <span>{{ 'menu.herramientas' | trans }}</span>
         </a>
-        <!-- <a class="menu-programa" href="{{ path('programa_estadisticas') }}" id="menu-configuracion">
+        {# <a class="menu-programa" href="{{ path('programa_estadisticas') }}" id="menu-configuracion">
             <img src="{{ asset('img/menu_programa/estadisticas.jpg') }}" alt=""/>
             <span>{{ 'menu.estadisticas' | trans }}</span>
-        </a> -->
+        </a> #}
     </div>
     <div class="container">
         <a href="#" onclick="window.open('http://infotaller.info')" class="btn btn-primary pull-right">{{ 'registrar.taller' | trans }}</a>

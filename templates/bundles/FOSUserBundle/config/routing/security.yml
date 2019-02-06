@@ -1,0 +1,16 @@
+#Security
+
+fos_user_security_login:
+    locales:  { ca: "/ca_login", pt: "/pt_login", en: "/login", fr: "/entrer", es: "/loguearse" }
+    defaults: { _controller: FOSUserBundle:Security:login }
+    methods: [GET, POST]
+
+fos_user_security_check:
+    locales:  { ca: "/ca_login_check", pt: "/pt_login_check", en: "/login_check", fr: "/controler_entree", es: "/chequear_entrada" }
+    defaults: { _controller: FOSUserBundle:Security:check }
+    methods: [POST]
+
+fos_user_security_logout:
+    locales:  { ca: "/ca_logout", pt: "/pt_logout", en: "/logout", fr: "/sortir", es: "/salir" }
+    defaults: { _controller: FOSUserBundle:Security:logout }
+    methods: [GET, POST]

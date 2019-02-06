@@ -38,6 +38,7 @@
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {
+        // TODO: change this url to piwik url
         var u="//localhost/piwik/";
         _paq.push(['setTrackerUrl', u+'piwik.php']);
         _paq.push(['setSiteId', '1']);
@@ -89,7 +90,8 @@
             }).success(function (data) {
                 $('#modal_contacto').modal('hide');
                 alertify.success('{{ 'mensaje.enviado' | trans }}');
-            }).error(function (data) {
+            }).error(function (err) {
+                console.log("Error", err);
                 alertify.error('{{ 'mensaje.no.enviado' | trans }}');
             });
         });
