@@ -1,20 +1,22 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
+    {% set ruta = 'program' %}
+    {% set grupo = 'facturacion' %}
     <ul class="submenu-programa">
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.or.factura' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'factura'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/factura' %}class="selected"{% endif %}>{{ 'submenu.or.factura' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.ventas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'ventas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/ventas' %}class="selected"{% endif %}>{{ 'submenu.ventas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.ventas.rapidas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'ventas_rapidas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/ventas_rapidas' %}class="selected"{% endif %}>{{ 'submenu.ventas.rapidas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.pedidos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'pedidos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/pedidos' %}class="selected"{% endif %}>{{ 'submenu.pedidos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.caja' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'caja'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/caja' %}class="selected"{% endif %}>{{ 'submenu.caja' | trans }}</li>
         </a>
     </ul>
 {% endblock %}

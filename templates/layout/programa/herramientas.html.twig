@@ -1,89 +1,91 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
+    {% set ruta = 'program' %}
+    {% set grupo = 'herramientas' %}
     <ul class="submenu-programa">
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.calendario' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'calendario'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/calendario' %}class="selected"{% endif %}>{{ 'submenu.calendario' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.agenda' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'agenda'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/agenda' %}class="selected"{% endif %}>{{ 'submenu.agenda' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.agenda.taller' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'agenda_taller'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/agenda_taller' %}class="selected"{% endif %}>{{ 'submenu.agenda.taller' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.impresos.trafico' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'impresos_trafico'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/impresos_trafico' %}class="selected"{% endif %}>{{ 'submenu.impresos.trafico' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.matriculas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'matriculas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/matriculas' %}class="selected"{% endif %}>{{ 'submenu.matriculas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.telefonos.utilidad' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'telefonos_utilidad'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/telefonos_utilidad' %}class="selected"{% endif %}>{{ 'submenu.telefonos.utilidad' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.fax' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'fax'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/fax' %}class="selected"{% endif %}>{{ 'submenu.fax' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.sms.certificaciones' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'sms_certificaciones'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/sms_certificaciones' %}class="selected"{% endif %}>{{ 'submenu.sms.certificaciones' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.envios' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'envios'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/envios' %}class="selected"{% endif %}>{{ 'submenu.envios' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.sobres' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'sobres'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/sobres' %}class="selected"{% endif %}>{{ 'submenu.sobres' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.visor.imagenes' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'visor_imagenes'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/visor_imagenes' %}class="selected"{% endif %}>{{ 'submenu.visor.imagenes' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.video.seguridad' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'video_seguridad'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/video_seguridad' %}class="selected"{% endif %}>{{ 'submenu.video.seguridad' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.carta.modelo' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'carta_modelo'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/carta_modelo' %}class="selected"{% endif %}>{{ 'submenu.carta.modelo' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.herramientas.google' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'herramientas_google'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/herramientas_google' %}class="selected"{% endif %}>{{ 'submenu.herramientas.google' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.sincronizar.datos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'sincronizar_datos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/sincronizar_datos' %}class="selected"{% endif %}>{{ 'submenu.sincronizar.datos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.gestionar.archivos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'gestionar_archivos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/gestionar_archivos' %}class="selected"{% endif %}>{{ 'submenu.gestionar.archivos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.asistencia.tecnica' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'asistencia_tecnica'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/asistencia_tecnica' %}class="selected"{% endif %}>{{ 'submenu.asistencia.tecnica' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.gestion.documental' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'gestion_documental'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/gestion_documental' %}class="selected"{% endif %}>{{ 'submenu.gestion.documental' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.notas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'notas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/notas' %}class="selected"{% endif %}>{{ 'submenu.notas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.administrador.web' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'administrador_web'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/administrador_web' %}class="selected"{% endif %}>{{ 'submenu.administrador.web' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.analisis.web' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'analisis_web'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/analisis_web' %}class="selected"{% endif %}>{{ 'submenu.analisis.web' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.administrador.bd' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'administrador_bd'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/administrador_bd' %}class="selected"{% endif %}>{{ 'submenu.administrador.bd' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.neumaticos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'neumaticos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/neumaticos' %}class="selected"{% endif %}>{{ 'submenu.neumaticos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.gasolina.diesel' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'gasolina_diesel'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/gasolina_diesel' %}class="selected"{% endif %}>{{ 'submenu.gasolina.diesel' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.auditoria' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'auditoria'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/auditoria' %}class="selected"{% endif %}>{{ 'submenu.auditoria' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.divisas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'divisas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/divisas' %}class="selected"{% endif %}>{{ 'submenu.divisas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.buscar.empleado' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'buscar_empleado'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/buscar_empleado' %}class="selected"{% endif %}>{{ 'submenu.buscar.empleado' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': 'configuracion', 'pagina': 'registro_vehiculos'}) }}">
-            <li>{{ 'submenu.financiacion' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'financiacion'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/financiacion' %}class="selected"{% endif %}>{{ 'submenu.financiacion' | trans }}</li>
         </a>
     </ul>
 {% endblock %}

@@ -1,39 +1,40 @@
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
+    {% set ruta = 'program' %}
     {% set grupo = 'archivos' %}
     <ul class="submenu-programa">
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'clientes'}) }}">
-            <li>{{ 'submenu.clientes' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'clientes'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/clientes' %}class="selected"{% endif %}>{{ 'submenu.clientes' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'vehiculos'}) }}">
-            <li>{{ 'submenu.vehiculos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'vehiculos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/vehiculos' %}class="selected"{% endif %}>{{ 'submenu.vehiculos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'proveedores'}) }}">
-            <li>{{ 'submenu.proveedores' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'proveedores'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/proveedores' %}class="selected"{% endif %}>{{ 'submenu.proveedores' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'empleados'}) }}">
-            <li>{{ 'submenu.empleados' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'empleados'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/empleados' %}class="selected"{% endif %}>{{ 'submenu.empleados' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'recambios'}) }}">
-            <li>{{ 'submenu.recambios' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'recambios'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/recambios' %}class="selected"{% endif %}>{{ 'submenu.recambios' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'compra_venta'}) }}">
-            <li>{{ 'submenu.compra.venta' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'compra_venta'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/compra_venta' %}class="selected"{% endif %}>{{ 'submenu.compra.venta' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'ficha_tecnica'}) }}">
-            <li>{{ 'submenu.ficha.tecnica' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'ficha_tecnica'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/ficha_tecnica' %}class="selected"{% endif %}>{{ 'submenu.ficha.tecnica' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'transportista'}) }}">
-            <li>{{ 'submenu.transportista' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'transportista'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/transportista' %}class="selected"{% endif %}>{{ 'submenu.transportista' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'listado_vehiculos'}) }}">
-            <li>{{ 'submenu.listado.vehiculos' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'listado_vehiculos'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/listado_vehiculos' %}class="selected"{% endif %}>{{ 'submenu.listado.vehiculos' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'matriculas'}) }}">
-            <li>{{ 'submenu.matriculas' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'matriculas'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/matriculas' %}class="selected"{% endif %}>{{ 'submenu.matriculas' | trans }}</li>
         </a>
-        <a href="{{ path('program', {'grupo': grupo, 'pagina': 'maquinaria'}) }}">
-            <li>{{ 'submenu.maquinaria' | trans }}</li>
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'maquinaria'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/maquinaria' %}class="selected"{% endif %}>{{ 'submenu.maquinaria' | trans }}</li>
         </a>
     </ul>
 {% endblock %}

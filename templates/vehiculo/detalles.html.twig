@@ -43,7 +43,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesTaller.ingles %}
-                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
+                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
                     <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
@@ -53,7 +54,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesTaller.espannol %}
-                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
+                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
                     <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
@@ -79,7 +81,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesUsuario.ingles %}
-                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
+                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
                     <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
@@ -89,7 +92,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesUsuario.espannol %}
-                <a href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles">
+                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
+                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
                     <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
@@ -116,7 +120,8 @@
                 </div>
                 {% for esquema in esquemasElectricos.ingles %}
                 <div class="img-bg-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ esquema.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ esquema.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
                         <span>{{ esquema.titulo }}</span>
                     </a>
@@ -128,7 +133,8 @@
                 </div>
                 {% for esquema in esquemasElectricos.espannol %}
                 <div class="img-bg-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ esquema.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ esquema.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
                         <span>{{ esquema.titulo }}</span>
                     </a>
@@ -156,7 +162,8 @@
                 </div>
                 {% for despiece in despieces.ingles %}
                 <div class="img-bg-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ despiece.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ despiece.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
                         <span>{{ despiece.titulo }}</span>
                     </a>
@@ -168,7 +175,8 @@
                 </div>
                 {% for despiece in despieces.espannol %}
                 <div class="img-bg-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ despiece.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ despiece.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
                         <span>{{ despiece.titulo }}</span>
                     </a>
@@ -196,7 +204,8 @@
                 </div>
                 {% for video in videos.ingles %}
                 <div class="manual-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ video.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ video.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
@@ -208,7 +217,8 @@
                 </div>
                 {% for video in videos.espannol %}
                 <div class="manual-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ video.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ video.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
@@ -236,7 +246,8 @@
                 </div>
                 {% for catalogo in catalogos.ingles %}
                 <div class="manual-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ catalogo.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ catalogo.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
                         <span>{{ catalogo.titulo }}</span>
                     </a>
@@ -248,7 +259,8 @@
                 </div>
                 {% for catalogo in catalogos.espannol %}
                 <div class="manual-detalles">
-                    <a href="{{ asset('files/vehiculos/' ~ catalogo.name) }}">
+                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ catalogo.name) }}"> #}
+                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
                         <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
                         <span>{{ catalogo.titulo }}</span>
                     </a>
