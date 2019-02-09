@@ -16,3 +16,6 @@ fos_user:
     resetting:
         email:
             template: '@FOSUser/Resetting/email.email.twig'
+    profile:
+        form:
+            validation_groups:   [Profile, ResetPassword, Registration, ChangePassword]

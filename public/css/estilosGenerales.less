@@ -280,7 +280,7 @@ body {
   }
 
   .form-login, .form-centro {
-    width: 250px;
+    width: 300px;
     margin: 0 auto;
   }
 
@@ -418,6 +418,7 @@ body {
     img {
       width: 100px;
       margin-bottom: 20px;
+      display: block;
     }
   }
 
@@ -529,5 +530,18 @@ body {
 // remove margin from bootstrap .container
 
 .container {
-  max-width: none;
+  max-width: none !important;
+}
+
+.navbar-header {
+  margin-left: 12px !important;
+}
+
+// change color thead table
+.tablaVehiculos thead {
+  background: #dadada;
+}
+
+.lista-errores ul li:not(:first-child) {
+  margin-top: 5px;
 }

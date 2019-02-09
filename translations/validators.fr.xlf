@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="3010051">
+                <source>user.password.short</source>
+                <target>Le mot de passe doit comporter au moins 9 caractères et 16 au maximum.</target>
+            </trans-unit>
+            <trans-unit id="3010052">
+                <source>user.password.difficulty</source>
+                <target>Le mot de passe doit contenir aA-zZ, le numéro 0-9 et certains caractères spéciaux  ! @ # $ % ^ * ( ) , . ? + - </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

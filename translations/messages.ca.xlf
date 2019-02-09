@@ -56,7 +56,7 @@
 
             <trans-unit id="7">
                 <source>vehiculos.subidos</source>
-                <target>Vehicles enviats</target>
+                <target>Vehicles pujats</target>
             </trans-unit>
             <trans-unit id="8">
                 <source>marca</source>
@@ -100,7 +100,7 @@
             </trans-unit>
             <trans-unit id="18">
                 <source>vehiculos.actualizados</source>
-                <target>Vehicles Actualitzat</target>
+                <target>Vehicles actualitzats</target>
             </trans-unit>
             <trans-unit id="19">
                 <source>ultimos.30.dias</source>
