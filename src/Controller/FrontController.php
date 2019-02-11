@@ -71,7 +71,7 @@ class FrontController extends AbstractController
                         'mensaje' => $request->get('mensaje_contacto'),
                 ]);
 
-                $this->enviarEmail('Contacto', $_ENV['MAIL_INFO'], $email_html);
+                $this->enviarEmail('Contacto', $request->get('para_contacto'), $email_html);
                 break;
             case 'publicidad':
                 if (!$request->get('nombre_publicidad') || !$request->get('email_publicidad') || !$request->get('mensaje_publicidad')) {
@@ -84,7 +84,7 @@ class FrontController extends AbstractController
                         'mensaje' => $request->get('mensaje_publicidad'),
                 ]);
 
-                $this->enviarEmail('Publicidad', $_ENV['MAIL_INFO'], $email_html);
+                $this->enviarEmail('Publicidad', $request->get('para_contacto'), $email_html);
                 break;
         }
 

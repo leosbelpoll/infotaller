@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="3010051">
                 <source>user.password.short</source>
-                <target>La contrasenya ha de tenir com a mínim 9 caràcters i un màxim de 16 segons</target>
+                <target>La contrasenya ha de tenir com a mínim 9 caràcters o un màxim de 16</target>
             </trans-unit>
             <trans-unit id="3010052">
                 <source>user.password.difficulty</source>
-                <target>La contrasenya ha de contenir aA-zZ, número 0-9 i alguns dels caràcters especials ! @ # $ % ^ * ( ) , . ? + - </target>
+                <target>La contrasenya ha de contenir aA-zZ, número 0-9 i alguns dels caràcters especials ! @ # $ % ^ * ( ) , . ? + -</target>
             </trans-unit>
         </body>
     </file>
