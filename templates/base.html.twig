@@ -48,7 +48,7 @@
 </script>
 <!-- End Piwik Code -->
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?hl={{app.request.locale}}'></script>
 <script src="{{ asset('vendor/jquery/js/jquery.js') }}"></script>
 
 
@@ -95,6 +95,10 @@
                 alertify.error('{{ 'mensaje.no.enviado' | trans }}');
             });
         });
+
+        removeDisabledFromButton = function(id) {
+            $("[disabled]").removeAttr('disabled');
+        };
 
     });
 </script>

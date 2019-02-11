@@ -545,3 +545,19 @@ body {
 .lista-errores ul li:not(:first-child) {
   margin-top: 5px;
 }
+
+.btn-disabled {
+  background: rgb(182, 182, 182);
+  color: rgb(126, 126, 126);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+
+.modal {
+  overflow-y: auto;
+}
+
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  margin-right: 0px;
+}

@@ -3,7 +3,7 @@
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
 
-    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register form-centro', 'placeholder':'fos_user_registration_register form' | trans }}) }}
+    {{ form_start(form, {'method': 'post', 'action': path('registerCheckRecaptcha'), 'attr': {'class': 'fos_user_registration_register form-centro', 'placeholder':'fos_user_registration_register form' | trans }}) }}
 
     <div class="row lista-errores">
         <!-- <div>{#{{ form_errors(form.name) }}#}</div> -->
@@ -24,9 +24,9 @@
         <br/>
         {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder':'form.password_confirmation' | trans }}) }}
         <br/>
-        <div class="g-recaptcha" data-sitekey="6LeNDzsUAAAAAF3eHINBG760-PLtVl374edsvihK"></div>
+        <div class="g-recaptcha" data-callback="removeDisabledFromButton" data-sitekey="{{recaptcha}}"></div>
         <br/>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-lg btn-primary btn-block"/>
+        <input disabled type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-lg btn-primary btn-block" id="btnRegister"/>
     </div>
 
     {{ form_end(form) }}
