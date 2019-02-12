@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\FrontController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,12 @@ use FOS\UserBundle\Controller\RegistrationController;
 class SecurityController extends Controller
 {
     private $registrationController;
+    private $frontController;
 
-    public function __construct(RegistrationController $registrationController)
+    public function __construct(RegistrationController $registrationController, FrontController $frontController)
     {
         $this->registrationController = $registrationController;
+        $this->frontController = $frontController;
     }
 
     /**
@@ -41,7 +44,15 @@ class SecurityController extends Controller
         $result = json_decode($response->getBody(), true);
 
         if ($result['success']) {
-            return $this->registrationController->registerAction($request);
+            switch($result['action']){
+                case 'contact':
+                return $this->frontController->crearEmailAction($request);
+                case 'register':
+                    return $this->registrationController->registerAction($request);
+                default:
+                    throw new \Exception();
+            }
+            
         }
 
         throw new \Exception();

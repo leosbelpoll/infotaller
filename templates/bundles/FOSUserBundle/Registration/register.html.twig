@@ -24,10 +24,20 @@
         <br/>
         {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder':'form.password_confirmation' | trans }}) }}
         <br/>
-        <div class="g-recaptcha" data-callback="removeDisabledFromButton" data-sitekey="{{recaptcha}}"></div>
-        <br/>
-        <input disabled type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-lg btn-primary btn-block" id="btnRegister"/>
+        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-lg btn-primary btn-block" id="btnRegister"/>
     </div>
-
+    
     {{ form_end(form) }}
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{app.request.locale}}&render={{recaptcha}}"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{recaptcha}}', {action: 'register'}).then(function(token) {
+                $('#g-recaptcha-response').val(token);
+            });
+        });
+    </script>
+{% endblock %}
