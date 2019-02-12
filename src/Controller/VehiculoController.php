@@ -200,7 +200,7 @@ class VehiculoController extends Controller
 
         foreach($vehiculosObj as $vehiculo){
             $aux['datos'] = $vehiculo;
-            $aux['archivos'] = $this->getArchivos($vehiculo->getId());
+            $aux['archivos'] = $this->getArchivos($vehiculo);
 
             $vehiculos[] = $aux;
         }
@@ -219,7 +219,7 @@ class VehiculoController extends Controller
 
         foreach($vehiculosObj as $vehiculo){
             $aux['datos'] = $vehiculo;
-            $aux['archivos'] = $this->getArchivos($vehiculo->getId());
+            $aux['archivos'] = $this->getArchivos($vehiculo);
 
             $vehiculos[] = $aux;
         }
@@ -253,7 +253,7 @@ class VehiculoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculos);
         
-        if(count($vehiculos) == 1){
+        if(!is_array($vehiculos)){
             $fichaTecnica = $em->getRepository('App:Fcoches')->findOneByVehiculo($vehiculos);
         }
 
