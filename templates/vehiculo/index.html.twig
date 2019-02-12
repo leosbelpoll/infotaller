@@ -60,10 +60,10 @@
 
     $('#form_busqueda_vehiculos').submit(function (e) {
         e.preventDefault();
-        if (!$('#marca_vehiculo').val() || !$('#tipo_vehiculo').val() || !$('#modelo_vehiculo').val() || !$('#anno_vehiculo').val()) {
-            alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
-            return false;
-        }
+//        if (!$('#marca_vehiculo').val() || !$('#tipo_vehiculo').val() || !$('#modelo_vehiculo').val() || !$('#anno_vehiculo').val()) {
+//            alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
+//            return false;
+//        }
 
         $.ajax({
             url: $(this).attr('action'),
@@ -75,4 +75,105 @@
             console.log(data);
         });
     });
+
+    $('#marca_vehiculo').change(function (e){
+        if($(this).val() == '-1'){
+            $('#tipo_vehiculo')
+                .val('-1')
+                .html('<option value="-1">{{ 'tipo' | trans }}</option>')
+                .attr('disabled', true);
+                $('#btnBuscarVehiculos').attr('disabled', true);
+        }else{
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                url: "{{ path('buscarTiposPorMarca') }}",
+                data: {marca: $(this).val()},
+            })
+            .done(function(data) {
+                $('#tipo_vehiculo').removeAttr('disabled');
+                $('#tipo_vehiculo').html('<option value="-1">{{ 'tipo' | trans }}</option>');
+                data.forEach(function (t) {
+                    $('#tipo_vehiculo').append('<option value="'+t.id+'">'+t.name+'<option>');
+                });
+                $('#tipo_vehiculo option:not([value])').remove();
+                $('#btnBuscarVehiculos').removeAttr('disabled');
+            })
+            .fail(function(error) {
+                alertify.error('{{ 'error.servidor' | trans }}');
+                console.error("Error: ", error);
+            });
+        }
+
+        $('#modelo_vehiculo')
+            .val('-1')
+            .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+            .attr('disabled', true);
+        $('#anno_vehiculo')
+            .val('-1')
+            .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+            .attr('disabled', true);
+    });
+
+    $('#tipo_vehiculo').change(function (e){
+        if($(this).val() == '-1'){
+            $('#modelo_vehiculo')
+                .val('-1')
+                .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+                .attr('disabled', true);
+        }else{
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                url: "{{ path('buscarModelosPorTipo') }}",
+                data: {tipo: $(this).val()},
+            })
+            .done(function(data) {
+                $('#modelo_vehiculo').removeAttr('disabled');
+                $('#modelo_vehiculo').html('<option value="-1">{{ 'modelo' | trans }}</option>');
+                data.forEach(function (v) {
+                    $('#modelo_vehiculo').append('<option value="'+v.modelo+'">'+v.modelo+'<option>');
+                });
+                $('#modelo_vehiculo option:not([value])').remove();
+            })
+            .fail(function(error) {
+                alertify.error('{{ 'error.servidor' | trans }}');
+                console.error("Error: ", error);
+            });
+        }
+
+        $('#anno_vehiculo')
+            .val('-1')
+            .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+            .attr('disabled', true);
+    });
+
+    $('#modelo_vehiculo').change(function (e){
+        if($(this).val() == '-1'){
+            $('#anno_vehiculo')
+                .val('-1')
+                .html('<option value="-1">{{ 'anno' | trans }}</option>')
+                .attr('disabled', true);
+        }else{
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                url: "{{ path('buscarAnnosPorModelo') }}",
+                data: {modelo: $(this).val()},
+            })
+            .done(function(data) {
+                $('#anno_vehiculo').removeAttr('disabled');
+                $('#anno_vehiculo').html('<option value="-1">{{ 'anno' | trans }}</option>');
+                data.forEach(function (v) {
+                    $('#anno_vehiculo').append('<option value="'+v.fechaInicio+'">'+v.fechaInicio+'<option>');
+                });
+                $('#anno_vehiculo option:not([value])').remove();
+            })
+            .fail(function(error) {
+                alertify.error('{{ 'error.servidor' | trans }}');
+                console.error("Error: ", error);
+            });
+        }
+    });
+
 </script> {% endblock %}

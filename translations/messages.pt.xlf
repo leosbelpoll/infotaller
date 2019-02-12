@@ -682,6 +682,10 @@
                 <source>elemento.no.encontrado</source>
                 <target>O elemento não foi encontrado</target>
             </trans-unit>
+            <trans-unit id="3010051">
+                <source>cargando</source>
+                <target>Carregando</target>
+            </trans-unit>
 
         </body>
     </file>

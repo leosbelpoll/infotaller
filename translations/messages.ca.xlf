@@ -682,6 +682,10 @@
                 <source>elemento.no.encontrado</source>
                 <target>L'element no va ser trobat</target>
             </trans-unit>
+            <trans-unit id="3010051">
+                <source>cargando</source>
+                <target>Carregant</target>
+            </trans-unit>
 
 
         </body>

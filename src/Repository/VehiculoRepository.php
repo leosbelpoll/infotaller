@@ -42,14 +42,34 @@ class VehiculoRepository extends EntityRepository
 
     public function findPorFiltro($marca, $tipo, $modelo, $anno){
         $em = $this->getEntityManager();
-        $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca AND v.tipo = :tipo AND v.modelo = :modelo AND v.creacion BETWEEN :anno1 AND :anno2');
-        $consulta->setParameters([
-            'marca'     => $marca,
-            'tipo'      => $tipo,
-            'modelo'    => $modelo,
-            'anno1'      => $anno.'-1-1',
-            'anno2'      => $anno.'-12-31'
-        ]);
+        if($tipo == -1){
+            $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca');
+            $consulta->setParameters([
+                'marca'     => $marca,
+            ]);
+        } else if($modelo == -1) {
+            $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca AND v.tipo = :tipo');
+            $consulta->setParameters([
+                'marca'     => $marca,
+                'tipo'      => $tipo,
+            ]);
+        } else if($anno == -1){
+            $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca AND v.tipo = :tipo AND v.modelo = :modelo');
+            $consulta->setParameters([
+                'marca'     => $marca,
+                'tipo'      => $tipo,
+                'modelo'    => $modelo,
+            ]);
+        } else {
+            $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca AND v.tipo = :tipo AND v.modelo = :modelo AND v.fechaInicio = :anno');
+            $consulta->setParameters([
+                'marca'     => $marca,
+                'tipo'      => $tipo,
+                'modelo'    => $modelo,
+                'anno'      => $anno,
+            ]);
+        }
+
         return $consulta->getResult();
     }
 
@@ -71,5 +91,29 @@ class VehiculoRepository extends EntityRepository
         $consulta = $em->createQuery("SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha AND v.estado = 'actualizado' ORDER BY v.creacion DESC");
         $consulta->setParameter('fecha', $fecha);
         return $consulta->getResult();
+    }
+
+    public function findTiposPorMarca($marca){
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery("SELECT t FROM App:Tipo t INNER JOIN App:Vehiculo v WITH t = v.tipo WHERE v.marca = :marca");
+        $consulta->setParameter('marca', $marca);
+
+        return $consulta->getArrayResult();
+    }
+
+    public function findModelosPorTipo($tipo){
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v INNER JOIN App:Tipo t WITH t = v.tipo WHERE t.id = :tipo");
+        $consulta->setParameter('tipo', $tipo);
+
+        return $consulta->getArrayResult();
+    }
+
+    public function findAnnosPorModelo($modelo){
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v WHERE v.modelo = :modelo");
+        $consulta->setParameter('modelo', $modelo);
+
+        return $consulta->getArrayResult();
     }
 }

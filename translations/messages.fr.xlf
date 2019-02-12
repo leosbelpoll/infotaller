@@ -681,7 +681,11 @@
             <trans-unit id="3010050">
                 <source>elemento.no.encontrado</source>
                 <target>L'élément n'a pas été trouvé</target>
-                </trans-unit>
+            </trans-unit>
+            <trans-unit id="3010051">
+                <source>cargando</source>
+                <target>Chargement</target>
+            </trans-unit>
 
     </body>
 	</file>

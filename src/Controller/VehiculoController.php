@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Vehiculo;
 use App\Entity\File;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class VehiculoController extends Controller
 {
@@ -175,6 +176,7 @@ class VehiculoController extends Controller
      */
     public function busquedaAction(Request $request)
     {
+     
         $marca = $request->get('marca_vehiculo');
         $tipo = $request->get('tipo_vehiculo');
         $modelo = $request->get('modelo_vehiculo');
@@ -188,7 +190,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/created-vehicles    ", name="vehiculosSubidos")
+     * @Route("/created-vehicles", name="vehiculosSubidos")
      */
     public function vehiculosSubidosAction(Request $request, $tiempo)
     {
@@ -207,7 +209,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/updated-vehicles    ", name="vehiculosActualizados")
+     * @Route("/updated-vehicles", name="vehiculosActualizados")
      */
     public function vehiculosActualizadosAction(Request $request, $tiempo)
     {
@@ -225,7 +227,7 @@ class VehiculoController extends Controller
         return $this->render('vehiculo/tabla.html.twig', ['vehiculos' => $vehiculos]);
     }
 
-    public function getArchivos($vehiculo){
+    public function getArchivos($vehiculos){
         $imagenes = [];
         $manualesTaller = [];
         $manualesUsuario = [];
@@ -235,7 +237,7 @@ class VehiculoController extends Controller
         $catalogos = [];
         $fichaTecnica = null;
 
-        if(!$vehiculo){
+        if(!$vehiculos){
             return array(
                 'imagenes'              => $imagenes,
                 'manualesTaller'        => $manualesTaller,
@@ -249,8 +251,11 @@ class VehiculoController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculo);
-        $fichaTecnica = $em->getRepository('App:Fcoches')->findOneByVehiculo($vehiculo);
+        $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculos);
+        
+        if(count($vehiculos) == 1){
+            $fichaTecnica = $em->getRepository('App:Fcoches')->findOneByVehiculo($vehiculos);
+        }
 
         foreach ($archivos as $archivo) {
             switch ($archivo->getTipo()) {
@@ -384,5 +389,38 @@ class VehiculoController extends Controller
             'catalogos'             => $catalogos,
             'fichaTecnica'          => $fichaTecnica
         );
+    }
+
+    /**
+     * @Route("/get-types-by-mark", name="buscarTiposPorMarca")
+     */
+    public function buscarTiposPorMarca(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $marca = $request->request->get('marca');
+        $vehiculos = $em->getRepository('App:Vehiculo')->findTiposPorMarca($marca);
+
+        return new JsonResponse($vehiculos);
+    }
+
+    /**
+     * @Route("/get-models-by-type", name="buscarModelosPorTipo")
+     */
+    public function buscarModelosPorTipo(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $tipo = $request->request->get('tipo');
+        $vehiculos = $em->getRepository('App:Vehiculo')->findModelosPorTipo($tipo);
+
+        return new JsonResponse($vehiculos);
+    }
+
+    /**
+     * @Route("/get-years-by-model", name="buscarAnnosPorModelo")
+     */
+    public function buscarAnnosPorModelo(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $modelo = $request->request->get('modelo');
+        $vehiculos = $em->getRepository('App:Vehiculo')->findAnnosPorModelo($modelo);
+
+        return new JsonResponse($vehiculos);
     }
 }

@@ -25,7 +25,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register/check-recaptcha", name="registerCheckRecaptcha")
+     * @Route("/check", name="registerCheckRecaptcha")
      */
     public function registerCheckRecaptcha(Request $request)
     {

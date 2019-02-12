@@ -1,4 +1,4 @@
-{% if marcas| length == 0 %}
+{% if marcas | length == 0 %}
 
 <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
 <hr>
@@ -11,48 +11,49 @@
             {% if vehiculo is defined %}
                 <option value="{{ vehiculo.marca.id }}">{{ vehiculo.marca.name }}</option>
             {% else %}
-                <option value="">{{ 'marca' | trans }}</option>
+                <option value="-1">{{ 'marca' | trans }}</option>
             {% endif %}
             {% for marca in marcas %}
             <option value="{{ marca.id }}">{{ marca.name }}</option>
             {% endfor %}
         </select>
 
-        <select name="tipo_vehiculo" id="tipo_vehiculo">
-            {% if vehiculo is defined %}
+        <select name="tipo_vehiculo" id="tipo_vehiculo" disabled>
+            {# {% if vehiculo is defined %}
                 <option value="{{ vehiculo.tipo.id }}">{{ vehiculo.tipo.name }}</option>
-            {% else %}
-                <option value="">{{ 'tipo' | trans }}</option>
-            {% endif %}
+            {% else %} #}
+                <option value="-1">{{ 'tipo' | trans }}</option>
+            {# {% endif %}
             {% for tipo in tipos %}
             <option value="{{ tipo.id }}">{{ tipo.name }}</option>
-            {% endfor %}
+            {% endfor %} #}
         </select>
 
-        <select name="modelo_vehiculo" id="modelo_vehiculo">
-            {% if vehiculo is defined %}
+        <select name="modelo_vehiculo" id="modelo_vehiculo" disabled>
+            {# {% if vehiculo is defined %}
                 <option value="{{ vehiculo.modelo }}">{{ vehiculo.modelo }}</option>
-            {% else %}
-                <option value="">{{ 'modelo' | trans }}</option>
-            {% endif %}
+            {% else %} #}
+                <option value="-1">{{ 'modelo' | trans }}</option>
+            {# {% endif %}
             {% for modelo in modelos %}
             <option value="{{ modelo }}">{{ modelo }}</option>
-            {% endfor %}
+            {% endfor %} #}
         </select>
 
-        <select name="anno_vehiculo" id="anno_vehiculo">
-            {% if vehiculo is defined %}
+        <select name="anno_vehiculo" id="anno_vehiculo" disabled>
+            {# {% if vehiculo is defined %}
                 <option value="{{ vehiculo.creacion | date ('Y')}}">{{ vehiculo.creacion | date ('Y') }}</option>
-            {% else %}
-                <option value="">{{ 'anno' | trans }}</option>
-            {% endif %}
-            {% for anno in annos %}
-            <option value="{{ anno }}">{{ anno }}</option>
-            {% endfor %}
+            {% else %} #}
+                <option value="-1">{{ 'anno' | trans }}</option>
+                {# {% endif %}
+                {% for anno in annos %}
+                <option value="{{ anno }}">{{ anno }}</option>
+                {% endfor %} #}
         </select>
 
-        <button class="btn btn-primary">
-            <i class="fa fa-search"></i> {{ 'buscar' | trans }}</button>
+        <button class="btn btn-primary" id="btnBuscarVehiculos" disabled>
+            <i class="fa fa-search"></i> {{ 'buscar' | trans }}
+        </button>
     </form>
 </div>
 

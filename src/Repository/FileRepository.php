@@ -14,11 +14,11 @@ class FileRepository extends EntityRepository
         return $consulta->getResult();
     }
 
-    public function findAllPorVehiculo($vehiculo)
+    public function findAllPorVehiculo($vehiculos)
     {
         $em = $this->getEntityManager();
-        $consulta = $em->createQuery('SELECT f FROM App:File f JOIN f.vehiculo v  WHERE f.vehiculo = :vehiculo');
-        $consulta->setParameter('vehiculo', $vehiculo);
+        $consulta = $em->createQuery('SELECT f FROM App:File f JOIN f.vehiculo v  WHERE f.vehiculo IN (:vehiculos)');
+        $consulta->setParameter('vehiculos', $vehiculos);
         return $consulta->getResult();
     }
 }
