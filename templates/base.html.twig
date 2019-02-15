@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Bienvenido - Despiece{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logoAplicacion.png') }}"/>
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
-    {#<link rel="stylesheet" href="{{ asset('vendor/uploadfile.css') }}"/>#}
+    {{ encore_entry_link_tags('bootstrap') }}
+    {# <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/> #}
 
     <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}"/>
 
