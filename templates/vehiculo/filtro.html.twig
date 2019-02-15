@@ -19,36 +19,15 @@
         </select>
 
         <select name="tipo_vehiculo" id="tipo_vehiculo" disabled>
-            {# {% if vehiculo is defined %}
-                <option value="{{ vehiculo.tipo.id }}">{{ vehiculo.tipo.name }}</option>
-            {% else %} #}
-                <option value="-1">{{ 'tipo' | trans }}</option>
-            {# {% endif %}
-            {% for tipo in tipos %}
-            <option value="{{ tipo.id }}">{{ tipo.name }}</option>
-            {% endfor %} #}
+            <option value="-1">{{ 'tipo' | trans }}</option>
         </select>
 
         <select name="modelo_vehiculo" id="modelo_vehiculo" disabled>
-            {# {% if vehiculo is defined %}
-                <option value="{{ vehiculo.modelo }}">{{ vehiculo.modelo }}</option>
-            {% else %} #}
-                <option value="-1">{{ 'modelo' | trans }}</option>
-            {# {% endif %}
-            {% for modelo in modelos %}
-            <option value="{{ modelo }}">{{ modelo }}</option>
-            {% endfor %} #}
+            <option value="-1">{{ 'modelo' | trans }}</option>
         </select>
 
         <select name="anno_vehiculo" id="anno_vehiculo" disabled>
-            {# {% if vehiculo is defined %}
-                <option value="{{ vehiculo.creacion | date ('Y')}}">{{ vehiculo.creacion | date ('Y') }}</option>
-            {% else %} #}
-                <option value="-1">{{ 'anno' | trans }}</option>
-                {# {% endif %}
-                {% for anno in annos %}
-                <option value="{{ anno }}">{{ anno }}</option>
-                {% endfor %} #}
+            <option value="-1">{{ 'anno' | trans }}</option>
         </select>
 
         <button class="btn btn-primary" id="btnBuscarVehiculos" disabled>

@@ -97,10 +97,26 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('vendor/jquery/js/dataTables.js') }}"></script>
+    <script src="{{ asset('jquery/js/dataTables.js') }}"></script>
     <script>
         function configurarDataTables() {
-            $('.tablaVehiculos').dataTable();
+            $('.tablaVehiculos').dataTable({
+                {% set language = "" %}
+                {% if app.request.locale == 'es' %}
+                    {% set language = "Spanish" %}
+                {% elseif app.request.locale == 'en' %}
+                    {% set language = "English" %}
+                {% elseif app.request.locale == 'fr' %}
+                    {% set language = "French" %}
+                {% elseif app.request.locale == 'ca' %}
+                    {% set language = "Catalan" %}                        
+                {% elseif app.request.locale == 'pt' %}
+                    {% set language = "Portuguese" %}
+                {% endif %}
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/{{language}}.json"
+                }
+            });
         }
         $(function () {
 

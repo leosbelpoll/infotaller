@@ -17,9 +17,25 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('bootstrap', './assets/vendor/bootstrap/css/bootstrap.min.css')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
+    .addEntry('css/bootstrap', './assets/vendor/bootstrap/css/bootstrap.min.css')
+    .addEntry('css/font-awesome', './assets/vendor/font-awesome/css/font-awesome.min.css')
+    .addEntry('css/jquery', './assets/vendor/jquery/css/jquery.css')
+    .addEntry('css/offcanvas', './assets/vendor/offcanvas.css')
+    .addEntry('css/alertify-core', './assets/vendor/alertify/css/alertify.core.css')
+    .addEntry('css/alertify-bootstrap', './assets/vendor/alertify/css/alertify.bootstrap.css')
+    .addEntry('css/flags', './assets/vendor/flags/flags.css')
+    .addEntry('css/navbar', './assets/css/navbar.scss')
+    .addEntry('css/estilos-generales', './assets/css/estilosGenerales.scss')
+
+
+    .addEntry('js/bootstrap', './assets/vendor/bootstrap/js/bootstrap.min.js')
+    .addEntry('js/alertify', './assets/vendor/alertify/js/alertify.min.js')
+    .addEntry('js/pantallaCargando', './assets/js/pantallaCargando.js')
+    .addEntry('js/validaciones', './assets/js/validaciones.js')
+    .addEntry('js/scriptsGenerales', './assets/js/scriptsGenerales.js')
+
+
+    .addEntry('js/_images', './assets/js/_images.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
@@ -37,15 +53,18 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
+    .configureFilenames({
+        images: '[path][name].[hash:8].[ext]',
+    })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    // .autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
