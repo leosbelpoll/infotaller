@@ -7,16 +7,17 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;  
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
+* @ORM\Entity
+* @ORM\Table(name="fos_user")
+* @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+*/
 class User extends BaseUser
 {
-        /**
-         * @ORM\Id
-         * @ORM\Column(type="uuid", unique=true)
-         * @ORM\GeneratedValue(strategy="CUSTOM")
-         * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-         */
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
     protected $id;
 
     /**
