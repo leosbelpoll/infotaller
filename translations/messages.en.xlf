@@ -17,15 +17,15 @@
 		</trans-unit>
 		<trans-unit id="104">
 			<source>menu.login</source>
-			<target>Sing in</target>
+			<target>Sign in</target>
 		</trans-unit>
 		<trans-unit id="105">
 			<source>menu.registrarse</source>
-			<target>Sing up</target>
+			<target>Sign up</target>
 		</trans-unit>
 		<trans-unit id="106">
 			<source>menu.logout</source>
-			<target>Sing out</target>
+			<target>Sign out</target>
 		</trans-unit>
         <trans-unit id="107">
             <source>menu.configuracion</source>
