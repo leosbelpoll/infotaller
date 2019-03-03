@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class VehiculoController extends Controller
 {
+
+    private $idioma = 'Spanish';
+
     /**
      * @Route("/cars", name="coches")
      */
@@ -19,7 +22,7 @@ class VehiculoController extends Controller
     {
         if($vehiculo != null){
             $em = $this->getDoctrine()->getManager();
-            $archivos = $this->getArchivos($vehiculo);
+            $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Coche';
             $archivos['apartado'] = $apartado;
             $vehiculoObj = $em->getRepository('App:Vehiculo')->findCoche($vehiculo);
@@ -42,9 +45,11 @@ class VehiculoController extends Controller
      */
     public function motosAction(Request $request, $vehiculo = null, $apartado = null)
     {
+        // dump($request);
+        // die;
         if($vehiculo != null){
             $em = $this->getDoctrine()->getManager();
-            $archivos = $this->getArchivos($vehiculo);
+            $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Motocicleta';
             $archivos['apartado'] = $apartado;
             $vehiculoObj = $em->getRepository('App:Vehiculo')->findMoto($vehiculo);
@@ -176,7 +181,6 @@ class VehiculoController extends Controller
      */
     public function busquedaAction(Request $request)
     {
-     
         $marca = $request->get('marca_vehiculo');
         $tipo = $request->get('tipo_vehiculo');
         $modelo = $request->get('modelo_vehiculo');
@@ -185,7 +189,7 @@ class VehiculoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $vehiculo = $em->getRepository('App:Vehiculo')->findPorFiltro($marca, $tipo, $modelo, $anno);
 
-        $archivos = $this->getArchivos($vehiculo);
+        $archivos = $this->getArchivos($vehiculo, $request->getLocale());
         return $this->render('vehiculo/detalles.html.twig', $archivos);
     }
 
@@ -200,7 +204,7 @@ class VehiculoController extends Controller
 
         foreach($vehiculosObj as $vehiculo){
             $aux['datos'] = $vehiculo;
-            $aux['archivos'] = $this->getArchivos($vehiculo);
+            $aux['archivos'] = $this->getArchivos($vehiculo, $request->getLocale());
 
             $vehiculos[] = $aux;
         }
@@ -219,7 +223,7 @@ class VehiculoController extends Controller
 
         foreach($vehiculosObj as $vehiculo){
             $aux['datos'] = $vehiculo;
-            $aux['archivos'] = $this->getArchivos($vehiculo);
+            $aux['archivos'] = $this->getArchivos($vehiculo, $request->getLocale());
 
             $vehiculos[] = $aux;
         }
@@ -227,7 +231,7 @@ class VehiculoController extends Controller
         return $this->render('vehiculo/tabla.html.twig', ['vehiculos' => $vehiculos]);
     }
 
-    public function getArchivos($vehiculos){
+    public function getArchivos($vehiculos, $locale){
         $imagenes = [];
         $manualesTaller = [];
         $manualesUsuario = [];
@@ -252,10 +256,18 @@ class VehiculoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculos);
+
+
         
         if(!is_array($vehiculos)){
-            $fichaTecnica = $em->getRepository('App:Fcoches')->findOneByVehiculo($vehiculos);
+            $fichaTecnica = $em->getRepository('App:Fcoches')->findOneBy([
+                'vehiculo' => $vehiculos,
+                'idioma' => $this->getIdioma($locale)
+            ]);
         }
+
+        dump($fichaTecnica);
+        // die;
 
         foreach ($archivos as $archivo) {
             switch ($archivo->getTipo()) {
@@ -422,5 +434,22 @@ class VehiculoController extends Controller
         $vehiculos = $em->getRepository('App:Vehiculo')->findAnnosPorModelo($modelo);
 
         return new JsonResponse($vehiculos);
+    }
+
+    private function getIdioma($locale = 'es') {
+        switch ($locale) {
+            case 'es':
+                return 'Spanish';
+            case 'en':
+                return 'English';
+            case 'fr':
+                return 'Frances';
+            case 'pt':
+                return 'Portugues';
+            case 'ca':
+                return 'Catala';
+            default:
+                return 'Spanish';
+        }
     }
 }
