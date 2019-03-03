@@ -45,8 +45,6 @@ class VehiculoController extends Controller
      */
     public function motosAction(Request $request, $vehiculo = null, $apartado = null)
     {
-        // dump($request);
-        // die;
         if($vehiculo != null){
             $em = $this->getDoctrine()->getManager();
             $archivos = $this->getArchivos($vehiculo, $request->getLocale());
@@ -256,8 +254,6 @@ class VehiculoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculos);
-
-
         
         if(!is_array($vehiculos)){
             $fichaTecnica = $em->getRepository('App:Fcoches')->findOneBy([
@@ -266,10 +262,24 @@ class VehiculoController extends Controller
             ]);
         }
 
-        dump($fichaTecnica);
-        // die;
-
         foreach ($archivos as $archivo) {
+            $posExtensionPint = strpos($archivo->getName(), '.');
+            $ext = substr($archivo->getName(), $posExtensionPint + 1);
+            if (in_array($ext, ['pdf'])) {
+                $archivo->type = 'doc';
+            } else if ($archivo->getTipo() === 'Video' && strpos($archivo->getName(), 'url#') !== false) {
+                $archivo->type = 'videoUrl';
+                $archivo->setName(substr($archivo->getName(), 4));
+            } else if (strpos($archivo->getName(), 'local#') !== false) {
+                $archivo->setName(substr($archivo->getName(), 6));
+            } else {
+                $archivo->type = 'img';
+            }
+            $posSlash = strpos($archivo->getName(), '/');
+            if ($posSlash === false) {
+                $archivo->setName('uploads/' . $archivo->getName());
+            }
+            
             switch ($archivo->getTipo()) {
                 case 'Imágenes':
                     $imagenes[] = $archivo;

@@ -4,3 +4,4 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         recaptcha: '%env(RECAPTCHA_CLIENT)%'
+        resources_url: '%env(RESOURCES_URL)%'

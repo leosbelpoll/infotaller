@@ -1,5 +1,4 @@
-{% if imagenes|length == 0 and manualesTaller|length == 0 and manualesUsuario|length == 0 and esquemasElectricos|length
-== 0 and despieces|length == 0 and videos|length == 0 and catalogos|length == 0 and fichaTecnica is null %}
+{% if imagenes|length == 0 and manualesTaller|length == 0 and manualesUsuario|length == 0 and esquemasElectricos|length == 0 and despieces|length == 0 and videos|length == 0 and catalogos|length == 0 and fichaTecnica is null %}
     <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
     <hr>
 {% else %}
@@ -18,8 +17,7 @@
             <div class="panel-body">
                 <div class="fb-album-container">
                     {% for imagen in imagenes %}
-                        {#<img src="{{ asset('files/vehiculos/' ~ imagen.name) }}" alt="Imagen" class="img-detalles" />#}
-                        <img src="{{ asset('img/vehiculos/img1.jpg') }}" alt="Imagen" class="img-detalles" />
+                        <img src="{{ asset(resources_url ~ imagen.name) }}" alt="Imagen" class="img-detalles" />
                     {% endfor %}
                 </div>
                 
@@ -43,9 +41,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesTaller.ingles %}
-                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
-                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
-                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
                 {% endfor %} {% endif %} {% if manualesTaller.espannol is defined %}
@@ -54,9 +51,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesTaller.espannol %}
-                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
-                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
-                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
                 {% endfor %} {% endif %}
@@ -81,9 +77,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesUsuario.ingles %}
-                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
-                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
-                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
                 {% endfor %} {% endif %} {% if manualesUsuario.espannol is defined %}
@@ -92,9 +87,8 @@
                     <hr/>
                 </div>
                 {% for manual in manualesUsuario.espannol %}
-                {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ manual.name) }}" class="manual-detalles"> #}
-                <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}" class="manual-detalles">
-                    <img src="{{ asset('img/iconoPDF.png') }}" alt="Manual" />
+                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
+                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
                 {% endfor %} {% endif %}
@@ -120,9 +114,8 @@
                 </div>
                 {% for esquema in esquemasElectricos.ingles %}
                 <div class="img-bg-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ esquema.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
+                    <a target="_blank" href="{{ asset(resources_url ~ esquema.name) }}">
+                        <img src="{{ esquema.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ esquema.name) }}" alt="Esquema" />
                         <span>{{ esquema.titulo }}</span>
                     </a>
                 </div>
@@ -133,9 +126,8 @@
                 </div>
                 {% for esquema in esquemasElectricos.espannol %}
                 <div class="img-bg-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ esquema.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/despiece.png') }}" alt="Esquema" />
+                    <a target="_blank" href="{{ asset(resources_url ~ esquema.name) }}">
+                        <img src="{{ esquema.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ esquema.name) }}" alt="Esquema" />
                         <span>{{ esquema.titulo }}</span>
                     </a>
                 </div>
@@ -162,9 +154,8 @@
                 </div>
                 {% for despiece in despieces.ingles %}
                 <div class="img-bg-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ despiece.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
+                    <a target="_blank" href="{{ asset(resources_url ~ despiece.name) }}">
+                        <img src="{{ despiece.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ despiece.name) }}" alt="Despiece" />
                         <span>{{ despiece.titulo }}</span>
                     </a>
                 </div>
@@ -175,9 +166,8 @@
                 </div>
                 {% for despiece in despieces.espannol %}
                 <div class="img-bg-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ despiece.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/despiece.png') }}" alt="Despiece" />
+                    <a target="_blank" href="{{ asset(resources_url ~ despiece.name) }}">
+                        <img src="{{ despiece.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ despiece.name) }}" alt="Despiece" />
                         <span>{{ despiece.titulo }}</span>
                     </a>
                 </div>
@@ -204,8 +194,7 @@
                 </div>
                 {% for video in videos.ingles %}
                 <div class="manual-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ video.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
+                    <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
                         <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
@@ -217,8 +206,7 @@
                 </div>
                 {% for video in videos.espannol %}
                 <div class="manual-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ video.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
+                    <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
                         <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
@@ -246,9 +234,8 @@
                 </div>
                 {% for catalogo in catalogos.ingles %}
                 <div class="manual-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ catalogo.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
+                    <a target="_blank" href="{{ asset(resources_url ~ catalogo.name) }}">
+                        <img src="{{ catalogo.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ catalogo.name) }}" alt="Catálogo" />
                         <span>{{ catalogo.titulo }}</span>
                     </a>
                 </div>
@@ -259,9 +246,8 @@
                 </div>
                 {% for catalogo in catalogos.espannol %}
                 <div class="manual-detalles">
-                    {# <a target="_blank" href="{{ asset('files/vehiculos/' ~ catalogo.name) }}"> #}
-                    <a target="_blank" href="{{ asset('files/vehiculos/prueba.pdf') }}">
-                        <img src="{{ asset('img/iconoPDF.png') }}" alt="Catálogo" />
+                    <a target="_blank" href="{{ asset(resources_url ~ catalogo.name) }}">
+                        <img src="{{ catalogo.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ catalogo.name) }}" alt="Catálogo" />
                         <span>{{ catalogo.titulo }}</span>
                     </a>
                 </div>
