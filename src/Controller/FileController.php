@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function findImagenVehiculoAction($vehiculo)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $file = $em->getRepository('App:File')->findImagenVehiculo($vehiculo);
         if($file){
             return new Response($file[0]->getName());
