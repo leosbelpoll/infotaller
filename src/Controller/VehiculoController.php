@@ -265,15 +265,16 @@ class VehiculoController extends Controller
         foreach ($archivos as $archivo) {
             $posExtensionPint = strpos($archivo->getName(), '.');
             $ext = substr($archivo->getName(), $posExtensionPint + 1);
+
             if (in_array($ext, ['pdf'])) {
                 $archivo->type = 'doc';
+            } else if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff'])) {
+                $archivo->type = 'img';
             } else if ($archivo->getTipo() === 'Video' && strpos($archivo->getName(), 'url#') !== false) {
                 $archivo->type = 'videoUrl';
                 $archivo->setName(substr($archivo->getName(), 4));
             } else if (strpos($archivo->getName(), 'local#') !== false) {
                 $archivo->setName(substr($archivo->getName(), 6));
-            } else {
-                $archivo->type = 'img';
             }
             $posSlash = strpos($archivo->getName(), '/');
             if ($posSlash === false) {
