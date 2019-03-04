@@ -1,6 +1,16 @@
 function mostrarPantallaCargando() {
-    $('body').prepend('<div id="pantallaCargando"></div>')
-    $('#pantallaCargando').addClass('pantallaCargando');
+    $('body').prepend(
+        `
+        <div id="pantallaCargando" class="loading-screen-background">
+            <div class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
+        </div>
+        `
+    );
 }
 
 function ocultarPantallaCargando() {
