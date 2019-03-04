@@ -268,14 +268,21 @@ class VehiculoController extends Controller
 
             if (in_array($ext, ['pdf'])) {
                 $archivo->type = 'doc';
-            } else if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff'])) {
+            }
+            
+            if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff'])) {
                 $archivo->type = 'img';
-            } else if ($archivo->getTipo() === 'Video' && strpos($archivo->getName(), 'url#') !== false) {
+            }
+            
+            if ($archivo->getTipo() === 'Video' && strpos($archivo->getName(), 'url#') !== false) {
                 $archivo->type = 'videoUrl';
                 $archivo->setName(substr($archivo->getName(), 4));
-            } else if (strpos($archivo->getName(), 'local#') !== false) {
+            }
+            
+            if (strpos($archivo->getName(), 'local#') !== false) {
                 $archivo->setName(substr($archivo->getName(), 6));
             }
+            
             $posSlash = strpos($archivo->getName(), '/');
             if ($posSlash === false) {
                 $archivo->setName('uploads/' . $archivo->getName());
