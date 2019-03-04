@@ -195,7 +195,7 @@
                 {% for video in videos.ingles %}
                 <div class="manual-detalles">
                     <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
-                        <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
+                        <img src="{{ video.type == 'img' ? asset(resources_url ~ video.name) : asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
                 </div>
@@ -207,7 +207,7 @@
                 {% for video in videos.espannol %}
                 <div class="manual-detalles">
                     <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
-                        <img src="{{ asset('img/iconoVideo.png') }}" alt="Video" />
+                        <img src="{{ video.type == 'img' ? asset(resources_url ~ video.name) : asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
                 </div>
