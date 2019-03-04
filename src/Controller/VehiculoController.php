@@ -21,7 +21,7 @@ class VehiculoController extends Controller
     public function cochesAction(Request $request, $vehiculo = null, $apartado = null)
     {
         if($vehiculo != null){
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager('despiece');
             $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Coche';
             $archivos['apartado'] = $apartado;
@@ -46,7 +46,7 @@ class VehiculoController extends Controller
     public function motosAction(Request $request, $vehiculo = null, $apartado = null)
     {
         if($vehiculo != null){
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager('despiece');
             $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Motocicleta';
             $archivos['apartado'] = $apartado;
@@ -72,7 +72,7 @@ class VehiculoController extends Controller
         $modelos = [];
         $annos = [];
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $vehiculos = $em->getRepository('App:Vehiculo')->findAllPorClase($clase);
         if($vehiculo){
             $vehiculoObj = $em->getRepository('App:Vehiculo')->find($vehiculo);
@@ -151,7 +151,7 @@ class VehiculoController extends Controller
      */
     public function busquedaDirectaAction(Request $request, $vehiculo, $apartado)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $vehiculoObj = $em->getRepository('App:Vehiculo')->find($vehiculo);
 
         if(!$vehiculoObj){
@@ -184,7 +184,7 @@ class VehiculoController extends Controller
         $modelo = $request->get('modelo_vehiculo');
         $anno = $request->get('anno_vehiculo');
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $vehiculo = $em->getRepository('App:Vehiculo')->findPorFiltro($marca, $tipo, $modelo, $anno);
 
         $archivos = $this->getArchivos($vehiculo, $request->getLocale());
@@ -196,7 +196,7 @@ class VehiculoController extends Controller
      */
     public function vehiculosSubidosAction(Request $request, $tiempo)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $vehiculos = [];
         $vehiculosObj = $em->getRepository('App:Vehiculo')->findVehiculosSubidos($tiempo);
 
@@ -215,7 +215,7 @@ class VehiculoController extends Controller
      */
     public function vehiculosActualizadosAction(Request $request, $tiempo)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $vehiculos = [];
         $vehiculosObj = $em->getRepository('App:Vehiculo')->findVehiculosActualizados($tiempo);
 
@@ -252,7 +252,7 @@ class VehiculoController extends Controller
             );
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $archivos = $em->getRepository('App:File')->findAllPorVehiculo($vehiculos);
         
         if(!is_array($vehiculos)){
@@ -417,7 +417,7 @@ class VehiculoController extends Controller
      * @Route("/get-types-by-mark", name="buscarTiposPorMarca")
      */
     public function buscarTiposPorMarca(Request $request){
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $marca = $request->request->get('marca');
         $vehiculos = $em->getRepository('App:Vehiculo')->findTiposPorMarca($marca);
 
@@ -428,7 +428,7 @@ class VehiculoController extends Controller
      * @Route("/get-models-by-type", name="buscarModelosPorTipo")
      */
     public function buscarModelosPorTipo(Request $request){
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $tipo = $request->request->get('tipo');
         $vehiculos = $em->getRepository('App:Vehiculo')->findModelosPorTipo($tipo);
 
@@ -439,7 +439,7 @@ class VehiculoController extends Controller
      * @Route("/get-years-by-model", name="buscarAnnosPorModelo")
      */
     public function buscarAnnosPorModelo(Request $request){
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager('despiece');
         $modelo = $request->request->get('modelo');
         $vehiculos = $em->getRepository('App:Vehiculo')->findAnnosPorModelo($modelo);
 

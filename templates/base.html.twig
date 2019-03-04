@@ -4,13 +4,13 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Bienvenido - Despiece{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logoAplicacion.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('alertify/css/alertify.core.css') }}">
+    <link rel="stylesheet" href="{{ asset('alertify/css/alertify.bootstrap.css') }}">
 
     {{ encore_entry_link_tags('css/bootstrap') }}
     {{ encore_entry_link_tags('css/font-awesome') }}
     {{ encore_entry_link_tags('css/jquery') }}
     {{ encore_entry_link_tags('css/offcanvas') }}
-    {{ encore_entry_link_tags('css/alertify-core') }}
-    {{ encore_entry_link_tags('css/alertify-bootstrap') }}
     {{ encore_entry_link_tags('css/flags') }}
     {{ encore_entry_link_tags('css/navbar') }}
     {{ encore_entry_link_tags('css/estilos-generales') }}
@@ -27,12 +27,10 @@
 
     {# this jquery version is mandatory, others dont work !! #}
     <script src="{{ asset('/jquery/js/jquery.js') }}"></script>
+    <script src="{{ asset('/alertify/js/alertify.min.js') }}"></script>
 
     {{ encore_entry_script_tags('js/bootstrap') }}
-    {{ encore_entry_script_tags('js/alertify') }}
     {{ encore_entry_script_tags('js/pantallaCargando') }}
-    {{ encore_entry_script_tags('js/validaciones') }}
-    {{ encore_entry_script_tags('js/scriptsGenerales') }}
 
     {% block javascripts %}{% endblock %}
 </body>

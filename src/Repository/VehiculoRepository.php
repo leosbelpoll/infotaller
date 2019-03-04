@@ -7,7 +7,7 @@ class VehiculoRepository extends EntityRepository
 {
 
     public function findAllPorClase($clase){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
 
         $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v JOIN v.clase c WHERE c.name = :clase');
         $consulta->setParameter('clase', $clase);
@@ -15,7 +15,7 @@ class VehiculoRepository extends EntityRepository
     }
 
     public function findCoche($vehiculo){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
 
         $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v JOIN v.clase c WHERE c.name = :clase and v.id = :vehiculo');
         $consulta->setParameter('clase', 'Coche');
@@ -28,7 +28,7 @@ class VehiculoRepository extends EntityRepository
     }
     
     public function findMoto($vehiculo){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
         
         $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v JOIN v.clase c WHERE c.name = :clase and v.id = :vehiculo');
         $consulta->setParameter('clase', 'Motocicleta');
@@ -41,7 +41,7 @@ class VehiculoRepository extends EntityRepository
     }
 
     public function findPorFiltro($marca, $tipo, $modelo, $anno){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
         if($tipo == -1){
             $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.marca = :marca');
             $consulta->setParameters([
@@ -76,7 +76,7 @@ class VehiculoRepository extends EntityRepository
     public function findVehiculosSubidos($tiempo){
         $fecha = new \DateTime();
         $fecha->modify($tiempo);
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
 
         $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha ORDER BY v.creacion DESC');
         $consulta->setParameter('fecha', $fecha);
@@ -86,7 +86,7 @@ class VehiculoRepository extends EntityRepository
     public function findVehiculosActualizados($tiempo){
         $fecha = new \DateTime();
         $fecha->modify($tiempo);
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
 
         $consulta = $em->createQuery("SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha AND v.estado = 'actualizado' ORDER BY v.creacion DESC");
         $consulta->setParameter('fecha', $fecha);
@@ -94,7 +94,7 @@ class VehiculoRepository extends EntityRepository
     }
 
     public function findTiposPorMarca($marca){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
         $consulta = $em->createQuery("SELECT t FROM App:Tipo t INNER JOIN App:Vehiculo v WITH t = v.tipo WHERE v.marca = :marca");
         $consulta->setParameter('marca', $marca);
 
@@ -102,7 +102,7 @@ class VehiculoRepository extends EntityRepository
     }
 
     public function findModelosPorTipo($tipo){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
         $consulta = $em->createQuery("SELECT v FROM App:vehiculo v INNER JOIN App:Tipo t WITH t = v.tipo WHERE t.id = :tipo");
         $consulta->setParameter('tipo', $tipo);
 
@@ -110,7 +110,7 @@ class VehiculoRepository extends EntityRepository
     }
 
     public function findAnnosPorModelo($modelo){
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager('despiece');
         $consulta = $em->createQuery("SELECT v FROM App:vehiculo v WHERE v.modelo = :modelo");
         $consulta->setParameter('modelo', $modelo);
 
