@@ -14,6 +14,11 @@
 {% endblock %}
 
 {% block javascripts %}
+
+{#
+    Este bloque hace que si se selecciono en la vista principal algun criterio especifico,
+        la pagina haga un scroll automatico hasta esa seccion especifica
+#}
 {% if apartado is defined %}
     <script>
         switch ('{{apartado}}'){
@@ -44,8 +49,11 @@
         }
     </script>
 {% endif %}
+
+
 <script>
     
+    {# Controlo si clickea algun manual que lo abra en una nueva pestanna el pdf #}
     $(document).on('click', 'a.manual-detalles', function (e) {
         e.preventDefault();
         ruta = $(this).attr('href');
@@ -60,10 +68,6 @@
 
     $('#form_busqueda_vehiculos').submit(function (e) {
         e.preventDefault();
-//        if (!$('#marca_vehiculo').val() || !$('#tipo_vehiculo').val() || !$('#modelo_vehiculo').val() || !$('#anno_vehiculo').val()) {
-//            alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
-//            return false;
-//        }
 
         $.ajax({
             url: $(this).attr('action'),

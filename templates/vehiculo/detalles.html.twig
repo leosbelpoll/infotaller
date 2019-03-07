@@ -1,3 +1,20 @@
+{# 
+    Pagina de detalle de de un vehiculo
+
+    - Si no llegan resultados del controlador, muestro cartel informando que no hay resultados
+    - Muestro acordion con zonas colapsables para las diferentes secciones (las que tenga) de un vehiculo
+        - Imagenes
+        - manuales de usuario
+        - manuales de taller
+        - .....
+        - por ultimo y lo mas extenso de esta vista los datos de la ficha tecnica
+
+    - No pongo mas comentarios debajo ya que es bien sencillo el codigo, solo imprimir las variables que llegan
+
+ #}
+
+{# Si todas las secciones de los vehiculos estan vacias muestro cartel de que no hay vehiculos #}
+{#  esto es a modo de validacion, ya que el formulario de filtro no dejara seleccionar vehiculos que no existan #}
 {% if imagenes|length == 0 and manualesTaller|length == 0 and manualesUsuario|length == 0 and esquemasElectricos|length == 0 and despieces|length == 0 and videos|length == 0 and catalogos|length == 0 and fichaTecnica is null %}
     <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
     <hr>

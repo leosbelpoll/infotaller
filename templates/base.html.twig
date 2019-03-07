@@ -1,12 +1,18 @@
+{# *** Plantilla principal de la aplicacion #}
 <!DOCTYPE html>
 <html lang="es_Es">
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Bienvenido - Despiece{% endblock %}</title>
+    {# Titulo por defecto que sale en la pestanna del navegador en caso que alguna pagina hija no ponga su propio titulo #}
+    <title>{% block title %}Bienvenido - Infotaller{% endblock %}</title>
+    {# Logo y estilos de la aplicacion #}
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logoAplicacion.png') }}"/>
+
+    {# Los estilos de alertify en particular dan problemas con el bundle de symfony para los assets, por eso los dejo fijos #}
     <link rel="stylesheet" href="{{ asset('alertify/css/alertify.core.css') }}">
     <link rel="stylesheet" href="{{ asset('alertify/css/alertify.bootstrap.css') }}">
 
+    {# Uso del bundle Encore para el trabajo con los assets #}
     {{ encore_entry_link_tags('css/bootstrap') }}
     {{ encore_entry_link_tags('css/font-awesome') }}
     {{ encore_entry_link_tags('css/jquery') }}
@@ -19,22 +25,26 @@
 </head>
 <body>
 
+    {# Agrego barra de navegacion #}
     {% include 'inc/navbar.html.twig' %}
 
+    {# Bloque body donde las paginas hijas ponen el contenido a mostrar #}
     {% block body %}{% endblock %}
 
+    {# Agrego el pie de pagina #}
     {% include 'inc/footer.html.twig' %}
 
-    {# this jquery version is mandatory, others dont work !! #}
+    {# Estos dos scripts en particular dan problemas con el bundle encore por eso los dejo fijos, esta version de jquery es requerida! #}
     <script src="{{ asset('/jquery/js/jquery.js') }}"></script>
     <script src="{{ asset('/alertify/js/alertify.min.js') }}"></script>
 
+    {# Uso del bundle Encore para el trabajo con los assets #}
     {{ encore_entry_script_tags('js/bootstrap') }}
     {{ encore_entry_script_tags('js/pantallaCargando') }}
 
     <script>
 
-        // Matomo code
+        {# Inicio del script de Matomo para el analisis del sitio #}
         var _paq = window._paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
@@ -46,9 +56,13 @@
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
+        {# Fin del script de Matomo para el analisis del sitio #}
 
-        // Modal to send Mails
-
+        
+        {#
+            Datos del modal para envio de correos a contactos,
+            lo pongo en la base general, porque se puede acceder desde cualquier parte de la aplicacion
+        #}
         var correo = '';
 
         var exp_reg_es_solo_espacios = /^ +$/;
@@ -77,27 +91,32 @@
             });
 
             $('#btn-enviar-contacto').click(function () {
+                {# valido que contenga datos el formulario #}
                 if (estaVacio($('#nombre_contacto').val()) || estaVacio($('#titulo_contacto').val()) || estaVacio($('#mensaje_contacto').val())) {
                     alertify.error("{{ 'introduzca.datos.formulario' | trans }}");
                     return false;
                 }
 
+                {# valido que contenga datos el formulario #}
                 if (esSoloEspacios($('#nombre_contacto').val()) || esSoloEspacios($('#titulo_contacto').val()) || esSoloEspacios($('#mensaje_contacto').val())) {
                     alertify.error("{{ 'introduzca.datos.formulario' | trans }}");
                     return false;
                 }
 
+                {# asigno el valor del contacto que se hizo click al input oculto del formulario #}
                 $('#para_contacto').val(correo);
 
+                {# Envio al controlador los datos para que se envie el correo #}
                 $.ajax({
                     url: $('#form-contacto').attr('action'),
                     data: $('#form-contacto').serialize(),
                     method: 'post'
                 }).success(function (data) {
+                    {# En caso de que salga todo bien, oculto el formulario y muestro un mensaje de OK #}
                     $('#modal_contacto').modal('hide');
                     alertify.success("{{ 'mensaje.enviado' | trans }}");
                 }).error(function (err) {
-                    console.log("Error", err);
+                    {# En caso de error, no oculto el formulario y muestro un mensaje de error #}
                     alertify.error("{{ 'mensaje.no.enviado' | trans }}");
                 });
             });
@@ -105,6 +124,7 @@
 
     </script>
 
+    {# Bloque de javascript donde las paginas hijas pueden poner su codigo javascript #}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

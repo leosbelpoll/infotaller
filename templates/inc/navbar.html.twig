@@ -8,20 +8,25 @@
             </button>
             <a class="navbar-brand" href="{{ path('portada') }}">
                 <img src="{{ asset('img/logoAplicacion.png') }}" alt="" width="30px"/>
-                Despiece
+                {# Titulo que aparece en letra grande del banner #}
+                Infotaller
             </a>
         </div>
         <div class="navbar-collapse collapse">
+            {# Parte del menu que se visualiza en la parte izquierda #}
             <ul class="nav navbar-nav">
+                {# Pregunto lo que contiene la ruta actual para resaltar el menu especifico app.request.get('_route') #}
                 <li {% if app.request.get('_route') == 'portada' %}class="active"{% endif %}><a
                             href="{{ path('portada') }}">{{ 'menu.inicio' | trans }}</a></li>
                 <li {% if app.request.get('_route') == 'coches' %}class="active"{% endif %}><a href="{{ path('coches') }}">{{ 'menu.coches' | trans | upper }}</a></li>
                 <li {% if app.request.get('_route') == 'motos' %}class="active"{% endif %}><a href="{{ path('motos') }}">{{ 'menu.motos' | trans | upper }}</a></li>
-                {#{% if app.user %}#}
-                    <li {% if app.request.get('_route')[0:7] == 'program' %}class="active"{% endif %}><a href="{{ path('program') }}">{{ 'menu.software' | trans | upper }}</a></li>
-                {#{% endif %}#}
+                 {# En este caso particular como hay muchas rutas que son de programa, solo pregunto por la primera parte de la ruta #}
+                <li {% if app.request.get('_route')[0:7] == 'program' %}class="active"{% endif %}><a href="{{ path('program') }}">{{ 'menu.software' | trans | upper }}</a></li>
             </ul>
+
+            {# Parte del menu que se visualiza en la parte derecha #}
             <ul class="nav navbar-nav navbar-right">
+                {# Si no hay usuario logueado muestro el menu para login, sino muestro el menu del usuario #}
                 {% if not app.user %}
                     <li {% if app.request.get('_route') == 'fos_user_security_login' %}class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">{{ 'menu.login' | trans }}</a></li>
                     <li {% if app.request.get('_route') == 'fos_user_registration_register' %}class="active"{% endif %}><a href="{{ path('fos_user_registration_register') }}">{{ 'menu.registrarse' | trans }}</a></li>
@@ -35,6 +40,8 @@
                         </ul>
                     </li>
                 {% endif %}
+
+                {# Opciones de idioma #}
                 <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {% if app.request.locale == 'es' %}
@@ -53,8 +60,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% set ruta = app.request.pathInfo |replace({'/': '**'}) %}
-                            
 
+                            {# Aqui pregunto el idioma activo para resaltarlo en las opciones #}
+                            {# Si se quisiera en vez de resaltar que no salga el idioma que tiene actualmente, cambiar class="active" por class="hidden" #}
                             <li {% if app.request.locale == 'es' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'es'}) }}"><i class="flag es"></i> Español</a></li>
                             <li {% if app.request.locale == 'en' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'en'}) }}"><i class="flag gb"></i> English</a></li>
                             <li {% if app.request.locale == 'ca' %} class="active" {% endif %}><a href="{{ path('cambiar_idioma_usuario', {'ruta': ruta != '' ? ruta : 'portada', 'locale':'ca'}) }}"><i class="flag catalonia"></i> Català</a></li>
@@ -64,6 +72,5 @@
                     </li>
             </ul>
         </div>
-        <!--/.nav-collapse -->
     </div>
 </div>

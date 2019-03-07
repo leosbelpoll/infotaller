@@ -1,6 +1,9 @@
 {% include 'modal/contacto.html.twig' %}
 
 <footer>
+    {# *** Redes sociales *** #}
+    {# TODO: poner las rutas verdaderas de las redes #}
+    {# ej: <a href="//facebook.com/infotaller"><i class="fa fa-facebook"></i></a> #}
     <div class="redesSociales pull-right">
         <a href="#"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -8,6 +11,9 @@
         <a href="#"><i class="fa fa-twitter"></i></a>
         <a href="#"><i class="fa fa-youtube"></i></a>
     </div>
+
+    {# *** Contactos a enviar correos *** #}
+    {# Si se cambia alguno o se agregar, hay que crear las cuentas de correo en el servidor #}
     <div class="container">
         <div class="col-sm-3 col-xs-12">
             <h3>{{ 'contacto' | trans }}</h3>
@@ -21,7 +27,9 @@
         </div>
                  
     </div>
+
+    {# *** Informacion de footer, cambiar a conveniencia *** #}
     <div class="pieApp">
-        <span>Aplicación Infotaller <strong>Despiece</strong> {{date()|date('Y')}}, Alguna otra información</span>
+        <span>Aplicación <strong>Infotaller</strong> {{date()|date('Y')}}</span>
     </div>
 </footer>

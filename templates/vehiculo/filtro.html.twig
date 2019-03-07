@@ -1,3 +1,10 @@
+{# 
+    Formulario de filtro de vehiculo
+
+        la idea de este formulario es que no permita al usuario seleccionar combinaciones de vehiculos inexistentes
+ #}
+
+{# Si no llegan marcas muestro cartel de que no existen vehiculos ya que es el criterio de busqueda mas general #}
 {% if marcas | length == 0 %}
 
 <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
