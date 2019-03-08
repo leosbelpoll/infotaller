@@ -7,6 +7,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;  
 
 /**
+* Entidad para la gestion de usuarios
+* 
 * @ORM\Entity
 * @ORM\Table(name="fos_user")
 * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,6 +23,10 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * Valido que la contrasenna cumpla las siguientes condiciones:
+     *  - entre 6 y 19 caracteres
+     *  - que contenga mayusculas y munisculas, numeros y caracteres especiales
+     * 
      * @Assert\Length(
      *     min=6,
      *     max=19,

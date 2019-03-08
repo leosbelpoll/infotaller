@@ -11,7 +11,9 @@ use GuzzleHttp\Client;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\Controller\RegistrationController;
 
-
+/**
+ * Este controlador es especificamente para el recaptcha, ya que el manejo de los usuarios lo hace FOSUserBundle
+ */
 
 class SecurityController extends Controller
 {
@@ -25,6 +27,8 @@ class SecurityController extends Controller
     }
 
     /**
+     * Envio la peticion a google para saber si el recaptcha es valido
+     * 
      * @Route("/check", name="registerCheckRecaptcha")
      */
     public function registerCheckRecaptcha(Request $request)
@@ -46,7 +50,7 @@ class SecurityController extends Controller
         if ($result['success']) {
             switch($result['action']){
                 case 'contact':
-                return $this->frontController->crearEmailAction($request);
+                    return $this->frontController->crearEmailAction($request);
                 case 'register':
                     return $this->registrationController->registerAction($request);
                 default:

@@ -5,6 +5,9 @@ use Doctrine\ORM\EntityRepository;
 
 class FileRepository extends EntityRepository
 {
+    /**
+     * Encontrar la primera imagen del vehiculo para usarla como thumb en la tabla de la portada
+     */
     public function findImagenVehiculo($vehiculo){
         $em = $this->getEntityManager('despiece');
 
@@ -15,6 +18,9 @@ class FileRepository extends EntityRepository
         return $consulta->getResult();
     }
 
+    /**
+     * Encontrar todos los archivos de vehiculos
+     */
     public function findAllPorVehiculo($vehiculos)
     {
         $em = $this->getEntityManager('despiece');

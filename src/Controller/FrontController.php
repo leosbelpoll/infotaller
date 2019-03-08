@@ -6,12 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Utils\Mail;
+
+/**
+ * Controlador de las vistas
+ */
 
 class FrontController extends AbstractController
 {
     private $mailer;
 
+    // Inyecto el Swift_Mailer para poder usarlo cuando lo necesite
     public function __construct(\Swift_Mailer $mailer)
     {
         $this->mailer = $mailer;
@@ -29,6 +33,12 @@ class FrontController extends AbstractController
     }
     
     /**
+     * Este metodo recibe el grupo y la pagina del programa
+     *  - si no llega ninguno renderizo la plantilla general de programas
+     *  - si llega solo el grupo renderizo la plantilla del grupo
+     *  - si llegan los dos intento renderizar la vista que esta en la carpeta de programas/grupo/pagina
+     *      - si no lo encuentra renderizo una vista explicando lo que hay que hacer para agregar ese nuevo programa
+     * 
      * @Route("/program/{grupo}/{pagina}", name="program", defaults={"grupo": null, "pagina": null})
      */
     public function programaAction(Request $request, $grupo = null, $pagina = null)
@@ -51,6 +61,8 @@ class FrontController extends AbstractController
     }
 
     /**
+     * Metodo para enviar emails
+     * 
      * @Route("/create_email", name="crear_email")
      */
     public function crearEmailAction(Request $request)
@@ -78,6 +90,9 @@ class FrontController extends AbstractController
         return new Response();
     }
 
+    /**
+     * Metodo auxiliar para enviar el email
+     */
     private function enviarEmail($asunto, $to, $body)
     {
         $mensaje = (new \Swift_Message($asunto))

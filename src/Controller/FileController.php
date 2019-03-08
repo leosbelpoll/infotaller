@@ -10,6 +10,10 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class FileController extends Controller
 {
+    /**
+     * Encontrar la primera imagen del vehiculo
+     *  actualmente se usa para mostrar el thumb en la tabla de la portada
+     */
     public function findImagenVehiculoAction($vehiculo)
     {
         $em = $this->getDoctrine()->getManager('despiece');
