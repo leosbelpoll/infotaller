@@ -266,9 +266,7 @@ class VehiculoController extends Controller
             $posExtensionPint = strpos($archivo->getName(), '.');
             $ext = substr($archivo->getName(), $posExtensionPint + 1);
 
-            if (in_array(strtolower($ext), ['pdf'])) {
-                $archivo->type = 'doc';
-            }
+            $archivo->type = 'doc';
             
             if (in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff', 'tga'])) {
                 $archivo->type = 'img';
