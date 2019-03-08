@@ -60,26 +60,39 @@
         window.open(ruta);
     });
 
+    {# Controlo el comportameinto del acordeon #}
     $(document).on('click', 'a.accordion-toggle', function (e) {
         e.preventDefault();
         $($(this).attr('href')).slideToggle();
         return false;
     });
 
+    {# Controlo el envio del formulario de filtro #}
     $('#form_busqueda_vehiculos').submit(function (e) {
         e.preventDefault();
 
+        {# Envio al controlador los datos #}
         $.ajax({
             url: $(this).attr('action'),
             data: $(this).serialize(),
             method: 'post'
         }).success(function (data) {
+            {# Si llegan bien los renderizo en la pagina #}
             $('#div_busqueda_vehiculos').html(data);
-        }).error(function (data) {
-            console.log(data);
+        }).error(function (error) {
+            {# Si ocurre aglgun error, muestro una alerta de error #}
+            alertify.error('{{ 'error.servidor' | trans }}');
         });
     });
 
+    {#
+        UX del formulario de filtro de vehiculos
+    #}
+
+    {#
+        Cuando se cambia la marca la mando al controlador y renderizo los tipos que me retorne
+            - Si se selecciona el valor "Marca" se resetean los valores dependientes
+    #}
     $('#marca_vehiculo').change(function (e){
         if($(this).val() == '-1'){
             $('#tipo_vehiculo')
@@ -105,7 +118,6 @@
             })
             .fail(function(error) {
                 alertify.error('{{ 'error.servidor' | trans }}');
-                console.error("Error: ", error);
             });
         }
 
@@ -115,10 +127,14 @@
             .attr('disabled', true);
         $('#anno_vehiculo')
             .val('-1')
-            .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+            .html('<option value="-1">{{ 'anno' | trans }}</option>')
             .attr('disabled', true);
     });
 
+    {#
+        Cuando se cambia el tipo lo mando al controlador y renderizo los modelos que me retorne
+            - Si se selecciona el valor "Tipo" se resetean los valores dependientes
+    #}
     $('#tipo_vehiculo').change(function (e){
         if($(this).val() == '-1'){
             $('#modelo_vehiculo')
@@ -148,10 +164,14 @@
 
         $('#anno_vehiculo')
             .val('-1')
-            .html('<option value="-1">{{ 'modelo' | trans }}</option>')
+            .html('<option value="-1">{{ 'anno' | trans }}</option>')
             .attr('disabled', true);
     });
 
+    {#
+        Cuando se cambia el modelo lo mando al controlador y renderizo los annos que me retorne
+            - Si se selecciona el valor "Modelo" se resetean los valores dependientes
+    #}
     $('#modelo_vehiculo').change(function (e){
         if($(this).val() == '-1'){
             $('#anno_vehiculo')

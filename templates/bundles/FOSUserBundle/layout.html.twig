@@ -1,3 +1,5 @@
+{# Plantilla de FOSUserBundle (Bundle que controla la gestion de usuarios) #}
+
 {% extends 'base.html.twig' %}
 
 {% block javascripts %}{% endblock %}
@@ -5,6 +7,7 @@
 {% block body %}
     <div class="container">
         {% if app.request.hasPreviousSession %}
+            {# Muestro los mensajes que hayan en la session #}
             {% for type, messages in app.session.flashBag.all %}
                 {% for message in messages %}
                     <div class="{{ type }}">
@@ -24,8 +27,8 @@
         <br/>
 
         <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+            {# Bloque para que las vistas hijas pongan su contenido #}
+            {% block fos_user_content %}{% endblock fos_user_content %}
         </div>
     </div>
 {% endblock %}

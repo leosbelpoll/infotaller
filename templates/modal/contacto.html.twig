@@ -1,3 +1,9 @@
+{# 
+    Modal del formulario de contacto para enviar los correos
+
+    es solo un formulario con los campos necesarios
+#}
+
 {% extends 'layout/modal.html.twig' %}
 
 {% block id %}modal_contacto{% endblock %}
@@ -29,6 +35,7 @@
 {% endblock %}
 
 {% block botones %}
+    {# Incluyo el recaptcha v3 #}
     <script src="https://www.google.com/recaptcha/api.js?hl={{app.request.locale}}&render={{recaptcha}}"></script>
     <script>
         grecaptcha.ready(function() {

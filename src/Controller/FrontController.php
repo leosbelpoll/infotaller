@@ -73,19 +73,6 @@ class FrontController extends AbstractController
 
                 $this->enviarEmail('Contacto', $request->get('para_contacto'), $email_html);
                 break;
-            case 'publicidad':
-                if (!$request->get('nombre_publicidad') || !$request->get('email_publicidad') || !$request->get('mensaje_publicidad')) {
-                    throw new \Exception('appdespiece.introduzca.datos.formulario');
-                }
-
-                $email_html = $this->get('twig')->render('email/publicidad.html.twig', [
-                        'nombre' => $request->get('nombre_publicidad'),
-                        'email' => $request->get('email_publicidad'),
-                        'mensaje' => $request->get('mensaje_publicidad'),
-                ]);
-
-                $this->enviarEmail('Publicidad', $request->get('para_contacto'), $email_html);
-                break;
         }
 
         return new Response();

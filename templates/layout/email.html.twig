@@ -1,8 +1,10 @@
+{# Esta es la plantilla para los correos #}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block titulo %}Email{% endblock %}</title>
+    <title>{% block titulo %}Infotaller Team{% endblock %}</title>
 
 </head>
 <body style="background: #f4f4f4;color: #242424;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;margin: 0;padding: 0;">
@@ -12,6 +14,7 @@
         <td width="10px"></td>
         <td>
             <section>
+                {# Bloque para que los correos hijos pongan su contenido #}
                 {% block body %}{% endblock %}
             </section>
         </td>

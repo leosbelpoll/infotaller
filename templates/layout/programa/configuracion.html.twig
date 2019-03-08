@@ -1,3 +1,22 @@
+{#
+    Plantilla de de la seccion de configuracion de programas
+
+    estas opciones son genericas, si quisiera annadir otra opcion solo tendria que annadir
+
+        <a href="{{ path(ruta, {'grupo': grupo, 'pagina': 'opcion-especifica'}) }}">
+            <li {% if app.request.pathInfo == '/'~ruta~'/'~grupo~'/opcion-especifica' %}class="selected"{% endif %}>{{ 'submenu.opcion-especifica' | trans }}</li>
+        </a>
+
+    Para que el texto de la opcion salga en todos los idiomas hay que agregarlo a los archivos /translations/messages.idioma.xlf de la siguiente manera
+        
+        <trans-unit id="Numero secuencial">
+            <source>submenu.opcion-especifica</source>
+            <target>Texto en el idioma de la opcion especifica</target>
+        </trans-unit>
+
+#}
+
+
 {% extends 'layout/programa.html.twig' %}
 {% block submenu %}
     {% set ruta = 'program' %}

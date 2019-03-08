@@ -1,3 +1,8 @@
+{#
+    Plantilla GENERAL de los programas
+        dentro de la carpeta /templates/layout/programa estan las plantillas especificas de las secciones de archivo, estadistica, ....
+#}
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -18,22 +23,20 @@
             <img src="{{ asset('img/menu_programa/herramientas.jpg') }}" alt=""/>
             <span>{{ 'menu.herramientas' | trans }}</span>
         </a>
-        {# <a class="menu-programa" href="{{ path('programa_estadisticas') }}" id="menu-configuracion">
-            <img src="{{ asset('img/menu_programa/estadisticas.jpg') }}" alt=""/>
-            <span>{{ 'menu.estadisticas' | trans }}</span>
-        </a> #}
     </div>
     <div class="container">
-        <a href="#" onclick="window.open('http://infotaller.info')" class="btn btn-primary pull-right">{{ 'registrar.taller' | trans }}</a>
+        {# TODO: poner en window.open('//direccion-web') de donde se va a registrar un nuevo taller #}
+        <a href="#" onclick="window.open('#')" class="btn btn-primary pull-right">{{ 'registrar.taller' | trans }}</a>
     </div>
     <div class="row">
 
         <div class="col-xs-2">
+            {# Bloque donde las plantillas hijas de cada seccion van a poner las opciones especificas de la seccion #}
             {% block submenu %}{% endblock %}
         </div>
         <div class="col-xs-10">
-            {% block contenido %}
-            {% endblock %}
+            {# Bloque donde se va a renderizar el HTML del programa especifico #}
+            {% block contenido %}{% endblock %}
         </div>
     </div>
 

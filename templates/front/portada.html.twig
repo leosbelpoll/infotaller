@@ -1,7 +1,14 @@
+{# 
+    Pagina de Portada de la aplicacion, incluye
+        - carousel de imagenes
+        - tabla de vehiculos creados
+        - tabla de vehiculos actualizados
+        - Publicidades
+#}
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% include 'modal/publicidad.html.twig' %}
     <div class="container">
         <div class="row">
             <div class="col-xs-2"></div>
@@ -56,84 +63,75 @@
                     {{ render(controller('App\\Controller\\VehiculoController::vehiculosActualizadosAction', {tiempo: '-30 day'})) }}
                 </div>
             </div>
+
             <div class="col-lg-1 col-md-2 publicidad">
-                <a href="http://direccion.com">
+                {# Aqui se cargan las publicidades con este formato #}
+
+                {# TODO: estas publicidades estan de ejemplo, poner imagen real y Url a la que va real #}
+                <a href="http://direccion.com" target="_blank">
                     <img src="{{ asset('img/publicidad/ByFtp-Opt.png') }}" alt="ByFtp-Opt"/>
                 </a>
 
-                <a href="http://direccion.com">
+                <a href="http://direccion.com" target="_blank">
                     <img src="{{ asset('img/publicidad/WebHosting-Opt.png') }}" alt="WebHosting-Opt"/>
                 </a>
-                
-                <!-- <a data-toggle="modal" href="#modal_publicidad" class="tu-publicidad-aqui">
-                    <span class="tu-publicidad">
-                        {{ 'tu.publicidad' | trans }}
-                    </span>
-                    <span class="aqui-publicidad">
-                        {{ 'aqui' | trans }}
-                    </span>
-                </a>
 
-                <a data-toggle="modal" href="#modal_publicidad" class="tu-publicidad-aqui">
-                    <span class="tu-publicidad">
-                        {{ 'tu.publicidad' | trans }}
-                    </span>
-                    <span class="aqui-publicidad">
-                        {{ 'aqui' | trans }}
-                    </span>
-                </a>
-
-                <a data-toggle="modal" href="#modal_publicidad" class="tu-publicidad-aqui">
-                    <span class="tu-publicidad">
-                        {{ 'tu.publicidad' | trans }}
-                    </span>
-                    <span class="aqui-publicidad">
-                        {{ 'aqui' | trans }}
-                    </span>
-                </a> -->
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    {# Cargo el script de los datatables #}
     <script src="{{ asset('jquery/js/dataTables.js') }}"></script>
     <script>
-        function configurarDataTables() {
-            $('.tablaVehiculos').dataTable({
-                {% set language = "" %}
-                {% if app.request.locale == 'es' %}
-                    {% set language = "Spanish" %}
-                {% elseif app.request.locale == 'en' %}
-                    {% set language = "English" %}
-                {% elseif app.request.locale == 'fr' %}
-                    {% set language = "French" %}
-                {% elseif app.request.locale == 'ca' %}
-                    {% set language = "Catalan" %}                        
-                {% elseif app.request.locale == 'pt' %}
-                    {% set language = "Portuguese" %}
-                {% endif %}
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/{{language}}.json"
+
+        {# Cargo el idioma de las datatables segun el lenguaje seleccionado 
+            y solo de la tabla que esta cargando el contenido en ese momento #}
+        function actualizarIdiomaDataTables() {
+            $('.tablaVehiculos').each(function (){
+                if (!$.fn.dataTable.isDataTable($(this))) {
+                    $(this).dataTable({
+                        {% set language = "" %}
+                        {% if app.request.locale == 'es' %}
+                            {% set language = "Spanish" %}
+                        {% elseif app.request.locale == 'en' %}
+                            {% set language = "English" %}
+                        {% elseif app.request.locale == 'fr' %}
+                            {% set language = "French" %}
+                        {% elseif app.request.locale == 'ca' %}
+                            {% set language = "Catalan" %}                        
+                        {% elseif app.request.locale == 'pt' %}
+                            {% set language = "Portuguese" %}
+                        {% endif %}
+                        language: {
+                            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/{{language}}.json"
+                        }
+                    });
                 }
-            });
+            })
+            
         }
         $(function () {
 
+            {# Habilito el carousel #}
             $('.carousel').carousel();
 
-            configurarDataTables();
+            actualizarIdiomaDataTables();
 
+            {# Envio al controlador los ultimos dias seleccionados por el cliente #}
             $('#selectTiempoVehiculosSubidos').change(function () {
-                var ruta = "{{ path('vehiculosSubidos', {tiempo: 'tiempo'}) }}";
-                var url = ruta.replace(/tiempo/, $(this).val());
+                var ruta = "{{ path('vehiculosSubidos', {tiempo: '__tiempo__'}) }}";
+                var url = ruta.replace(/__tiempo__/, $(this).val());
                 $.ajax({
                     url: url,
                 }).success(function (data) {
+                    {# Si la respuesta es OK actualizo el contenido del div de vehiculos creados #}
                     $('#divVehiculosSubidos').html(data);
-                    configurarDataTables();
+                    actualizarIdiomaDataTables();
                 }).error(function (error) {
-
+                    {# Si ocurre algun error, muestro mensaje de error #}
+                    alertify.error('{{ 'error.servidor' | trans }}');
                 });
             });
 
@@ -143,40 +141,14 @@
                 $.ajax({
                     url: url,
                 }).success(function (data) {
+                    {# Si la respuesta es OK actualizo el contenido del div de vehiculos actualizados #}
                     $('#divVehiculosActualizados').html(data);
-                    configurarDataTables();
+                    actualizarIdiomaDataTables();
                 }).error(function (error) {
+                    {# Si ocurre algun error, muestro mensaje de error #}
+                    alertify.error('{{ 'error.servidor' | trans }}');
                 });
             });
-
-            $('.publicidad>a').click(function (e){
-                e.preventDefault();
-                window.open($(this).attr('href'));
-            });
-
-            $('#btn-enviar-publicidad').click(function () {
-                if (!$('#nombre_publicidad').val() || !$('#email_publicidad').val() || !$('#mensaje_publicidad').val()) {
-                    alertify.error('{{ 'introduzca.datos.formulario' | trans }}');
-                    return false;
-                }
-
-                if (!/^(.+\@.+\..+)$/.test($('#email_publicidad').val())) {
-                    alertify.error('{{ 'email.invalido' | trans }}');
-                    return false;
-                }
-
-                $.ajax({
-                    url: $('#form-publicidad').attr('action'),
-                    data: $('#form-publicidad').serialize(),
-                    method: 'post'
-                }).success(function (data) {
-                    $('#modal_publicidad').modal('hide');
-                    alertify.success('{{ 'mensaje.enviado' | trans }}');
-                }).error(function (data) {
-                    alertify.error('{{ 'mensaje.no.enviado' | trans }}');
-                });
-            });
-
         });
     </script>
 {% endblock %}

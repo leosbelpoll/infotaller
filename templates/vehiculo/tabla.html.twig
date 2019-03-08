@@ -1,3 +1,9 @@
+{#
+    Tabla generica para los vehiculos
+     asigno valores a los diferentes apartados para cuando vaya a la pagina de detalles del vehiculo,
+        la pagina haga scroll automaticamente hasta la seccion clickeada
+#}
+
 <table class="tablaVehiculos table table-hover">
     <thead>
         <th></th>
@@ -10,12 +16,11 @@
         <tr>
             {% set imagen = render(controller('App\\Controller\\FileController::findImagenVehiculoAction', {vehiculo: vehiculo.datos.id })) %}
             <td width="130px">
-                {% if imagen != '' %}
-                {# <a href="#"><img src="{{ asset('img/vehiculos/' ~ imagen) }}" alt="{{ imagen }}" width="70px"/></a> #}
+                
                 <a href="{{ path('busquedaDirectaVehiculo', {'vehiculo': vehiculo.datos.id, 'apartado':0}) }}">
-                    <img src="{{ asset('img/vehiculos/img1.jpg') }}" alt="{{ imagen }}" width="70px" />
+                    {# Si el controlador me retorna una imagen la muestro, sino muestro un icono por defecto #}
+                    <img src="{{ imagen != '' ? asset(resources_url ~ imagen) : asset('/img/iconoMoto.png') }}" alt="{{ imagen }}" width="70px" />
                 </a>
-                {% endif %}
             </td>
             <td>
                 <a href="{{ path('busquedaDirectaVehiculo', {'vehiculo': vehiculo.datos.id, 'apartado':0}) }}">{{ vehiculo.datos.marca.name }}</a>

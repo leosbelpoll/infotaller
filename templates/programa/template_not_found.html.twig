@@ -1,3 +1,15 @@
+{# 
+    Plantilla para cuando no encuentra un programa dado el "grupo" y la "pagina" asociada
+
+        esta pantilla es especial ya que en el FrontController hay solo un metodo encargado de renderizar 
+        todos los programas que hay actualmente, pero seria capaz de agregar XXX mas sin ningun problema, 
+        solo pregunta, si no existe una vista para el grupo y la pagina renderiza esta plantilla dinamica, 
+        que lo que hago es dar las instrucciones de donde deberia estar el archivo y la estructura necesaria 
+        para que este lista una nueva seccion de programas
+
+        Asi de sencillo !
+ #}
+
 {% extends 'layout/programa/' ~ grupo ~ '.html.twig' %}
 
 {% block contenido %}
@@ -5,10 +17,11 @@
     <h3>Para crearla siga los siguientes pasos:</h3>
     <ul>
         <li>Cree el archivo <code>templates/{{grupo}}/{{pagina}}.html.twig</code> </li>
+        <br/>
         <li>Copie el contenido base:
             <p><code>{{ "{% extends 'layout/programa/" ~ grupo ~ ".html.twig' %}" }}</code></p>
             <p><code>{{ "{% block contenido %}" }}</code></p>
-            <p><code>{{ "// Contenido HTML deseado"}}</code></p>
+            <p><code>{{ "<h1>Reemplazame por el contenido HTML deseado</h1>" | escape }}</code></p>
             <p><code>{{ "{% endblock %}" }}</code></p>
         </li>
     </ul>

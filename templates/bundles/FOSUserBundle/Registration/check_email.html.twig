@@ -1,10 +1,11 @@
+{# Vista mostrando la confirmacion e informando que chequee el email #}
+
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
 
-
-    <span>{{ 'registration.check_email'|trans({'%email%': '<strong>'~user.email~'</strong>' }) | raw }}</span>
+    <i class="fa fa-check"></i> <span>{{ 'registration.check_email'|trans({'%email%': '<strong>'~user.email~'</strong>' }) | raw }}</span>
 
 {% endblock fos_user_content %}

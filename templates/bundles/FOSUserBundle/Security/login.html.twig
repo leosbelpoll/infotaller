@@ -1,3 +1,5 @@
+{# Vista de login #}
+
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
@@ -5,6 +7,7 @@
 
 
     <form action="{{ path("fos_user_security_check") }}" method="post" class="form-login">
+        {# Si existen errores los muestro en una lista #}
         {% if error %}
             <div class="lista-errores">
                 <ul>

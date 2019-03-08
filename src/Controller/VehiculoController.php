@@ -192,7 +192,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/created-vehicles", name="vehiculosSubidos")
+     * @Route("/created-vehicles/{tiempo}", name="vehiculosSubidos")
      */
     public function vehiculosSubidosAction(Request $request, $tiempo)
     {
@@ -211,7 +211,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/updated-vehicles", name="vehiculosActualizados")
+     * @Route("/updated-vehicles/{tiempo}", name="vehiculosActualizados")
      */
     public function vehiculosActualizadosAction(Request $request, $tiempo)
     {
