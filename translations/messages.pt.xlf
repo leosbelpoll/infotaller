@@ -686,6 +686,10 @@
                 <source>cargando</source>
                 <target>Carregando</target>
             </trans-unit>
+            <trans-unit id="3010052">
+                <source>no.ficha.para.idioma</source>
+                <target>Para este idioma, não insira ficha técnica, tente outro idioma</target>
+            </trans-unit>
 
         </body>
     </file>

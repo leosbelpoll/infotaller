@@ -689,6 +689,10 @@
                 <source>cargando</source>
                 <target>Loading</target>
             </trans-unit>
+            <trans-unit id="3010052">
+                <source>no.ficha.para.idioma</source>
+                <target>For this language, do not insert technical sheet, try another language</target>
+            </trans-unit>
 	</body>
 	</file>
 </xliff>

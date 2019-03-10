@@ -690,6 +690,10 @@
                 <source>cargando</source>
                 <target>Cargando</target>
             </trans-unit>
+            <trans-unit id="3010052">
+                <source>no.ficha.para.idioma</source>
+                <target>Para este idoma no se insertó ficha técnica, pruebe con otro idioma</target>
+            </trans-unit>
 
 	</body>
 	</file>

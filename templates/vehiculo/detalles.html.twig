@@ -285,162 +285,283 @@
         <div id="collapseFichaTecnica" class="panel-collapse collapse {% if apartado is defined and apartado == 7 %} in {% endif %}">
             <div class="panel-body">
                 <table class="table tabla-ficha-tecnica">
+                    {% if
+                        fichaTecnica.pocisionMotor == null and
+                        fichaTecnica.distribucion == null and
+                        fichaTecnica.numeroCilindros == null and
+                        fichaTecnica.valvulaCilindro == null and
+                        fichaTecnica.cilindrada == null and
+                        fichaTecnica.potenciaMaxima == null and
+                        fichaTecnica.parMotorMaxima == null and
+                        fichaTecnica.diametroCarrera == null and
+                        fichaTecnica.alimentacion == null and
+                        fichaTecnica.cajaCambio == null and
+                        fichaTecnica.desarrollos == null and
+                        fichaTecnica.marchaAtras == null and
+                        fichaTecnica.grupoFinal == null and
+                        fichaTecnica.traccion == null and
+                        fichaTecnica.suspensionDelantera == null and
+                        fichaTecnica.suspensionTrasera == null and
+                        fichaTecnica.frenosDelanteros == null and
+                        fichaTecnica.frenosTraseros == null and
+                        fichaTecnica.neumaticos == null and
+                        fichaTecnica.llantas == null and
+                        fichaTecnica.tipoDireccion == null and
+                        fichaTecnica.radioGiro == null and
+                        fichaTecnica.vueltasVolanteTope == null and
+                        fichaTecnica.largo == null and
+                        fichaTecnica.ancho == null and
+                        fichaTecnica.alto == null and
+                        fichaTecnica.distanciaEjes == null and
+                        fichaTecnica.viaDelantera == null and
+                        fichaTecnica.viaTrasera == null and
+                        fichaTecnica.peso == null and
+                        fichaTecnica.capacidadMaletero == null and
+                        fichaTecnica.depositoCombustible == null and
+                        fichaTecnica.velocidadMaxima == null and
+                        fichaTecnica.aceleracion == null and
+                        fichaTecnica.consumoUrbano == null and
+                        fichaTecnica.consumoExtraurbano == null and
+                        fichaTecnica.consumoMedio == null and
+                        fichaTecnica.emisiones == null and
+                        fichaTecnica.combustible == null
+                    %}
+                    <span>{{ 'no.ficha.para.idioma' | trans }}</span>
+                    {% endif %}
+                    {% if fichaTecnica.pocisionMotor != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.posicion.motor' | trans }}</th>
                         <td>{{fichaTecnica.pocisionMotor}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.distribucion != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.distribucion' | trans }}</th>
                         <td>{{fichaTecnica.distribucion}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.numeroCilindros != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.numero.cilindros' | trans }}</th>
                         <td>{{fichaTecnica.numeroCilindros}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.valvulaCilindro != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.valvulas.cilindros' | trans }}</th>
                         <td>{{fichaTecnica.valvulaCilindro}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.cilindrada != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.cilindrada' | trans }}</th>
                         <td>{{fichaTecnica.cilindrada}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.potenciaMaxima != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.potencia.maxima' | trans }}</th>
                         <td>{{fichaTecnica.potenciaMaxima}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.parMotorMaxima != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.motor.maxima' | trans }}</th>
                         <td>{{fichaTecnica.parMotorMaxima}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.diametroCarrera != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.diametro.carrera' | trans }}</th>
                         <td>{{fichaTecnica.diametroCarrera}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.alimentacion != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.alimentacion' | trans }}</th>
                         <td>{{fichaTecnica.alimentacion}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.cajaCambio != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.caja.cambio' | trans }}</th>
                         <td>{{fichaTecnica.cajaCambio}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.desarrollos != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.desarrollos' | trans }}</th>
                         <td>{{fichaTecnica.desarrollos}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.marchaAtras != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.marcha.atras' | trans }}</th>
                         <td>{{fichaTecnica.marchaAtras}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.grupoFinal != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.grupo.final' | trans }}</th>
                         <td>{{fichaTecnica.grupoFinal}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.traccion != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.traccion' | trans }}</th>
                         <td>{{fichaTecnica.traccion}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.suspensionDelantera != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.suspencion.delantera' | trans }}</th>
                         <td>{{fichaTecnica.suspensionDelantera}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.suspensionTrasera != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.suspencion.trasera' | trans }}</th>
                         <td>{{fichaTecnica.suspensionTrasera}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.frenosDelanteros != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.frenos.delanteros' | trans }}</th>
                         <td>{{fichaTecnica.frenosDelanteros}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.frenosTraseros != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.frenos.traseros' | trans }}</th>
                         <td>{{fichaTecnica.frenosTraseros}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.neumaticos != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.neumaticos' | trans }}</th>
                         <td>{{fichaTecnica.neumaticos}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.llantas != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.llantas' | trans }}</th>
                         <td>{{fichaTecnica.llantas}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.tipoDireccion != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.tipo.direccion' | trans }}</th>
                         <td>{{fichaTecnica.tipoDireccion}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.radioGiro != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.radio.giro' | trans }}</th>
                         <td>{{fichaTecnica.radioGiro}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.vueltasVolanteTope != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.vueltas.volante' | trans }}</th>
                         <td>{{fichaTecnica.vueltasVolanteTope}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.largo != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.largo' | trans }}</th>
                         <td>{{fichaTecnica.largo}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.ancho != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.ancho' | trans }}</th>
                         <td>{{fichaTecnica.ancho}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.alto != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.alto' | trans }}</th>
                         <td>{{fichaTecnica.alto}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.distanciaEjes != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.distancia.ejes' | trans }}</th>
                         <td>{{fichaTecnica.distanciaEjes}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.viaDelantera != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.via.delantera' | trans }}</th>
                         <td>{{fichaTecnica.viaDelantera}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.viaTrasera != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.via.trasera' | trans }}</th>
                         <td>{{fichaTecnica.viaTrasera}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.peso != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.peso' | trans }}</th>
                         <td>{{fichaTecnica.peso}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.capacidadMaletero != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.capacidad.maletero' | trans }}</th>
                         <td>{{fichaTecnica.capacidadMaletero}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.depositoCombustible != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.deposito.combustible' | trans }}</th>
                         <td>{{fichaTecnica.depositoCombustible}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.velocidadMaxima != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.velocidad.maxima' | trans }}</th>
                         <td>{{fichaTecnica.velocidadMaxima}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.aceleracion != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.aceleracion' | trans }}</th>
                         <td>{{fichaTecnica.aceleracion}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.consumoUrbano != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.consumo.urbano' | trans }}</th>
                         <td>{{fichaTecnica.consumoUrbano}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.consumoExtraurbano != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.consumo.extraurbano' | trans }}</th>
                         <td>{{fichaTecnica.consumoExtraurbano}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.consumoMedio != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.consumo.medio' | trans }}</th>
                         <td>{{fichaTecnica.consumoMedio}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.emisiones != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.emisiones.co2' | trans }}</th>
                         <td>{{fichaTecnica.emisiones}}</td>
                     </tr>
+                    {% endif %}
+                    {% if fichaTecnica.combustible != null %}
                     <tr>
                         <th>{{ 'ficha.tecnica.combustible' | trans }}</th>
                         <td>{{fichaTecnica.combustible}}</td>
                     </tr>
+                    {% endif %}
                 </table>
             </div>
         </div>

@@ -686,6 +686,10 @@
                 <source>cargando</source>
                 <target>Chargement</target>
             </trans-unit>
+            <trans-unit id="3010052">
+                <source>no.ficha.para.idioma</source>
+                <target>Pour cette langue, n'insérez pas de fiche technique, essayez une autre langue.</target>
+            </trans-unit>
 
     </body>
 	</file>

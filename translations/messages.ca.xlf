@@ -686,6 +686,10 @@
                 <source>cargando</source>
                 <target>Carregant</target>
             </trans-unit>
+            <trans-unit id="3010052">
+                <source>no.ficha.para.idioma</source>
+                <target>Per aquest idoma no inserit fitxa tècnica, proveu amb un altre idioma</target>
+            </trans-unit>
 
 
         </body>
