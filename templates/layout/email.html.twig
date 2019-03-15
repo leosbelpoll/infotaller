@@ -8,37 +8,55 @@
 
 </head>
 <body style="background: #f4f4f4;color: #242424;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;margin: 0;padding: 0;">
-
-<table border="0" style="background: white;width: 500px;margin: 0 auto; margin-top: 10px">
-    <tr>
-        <td width="10px"></td>
-        <td>
-            <section>
-                {# Bloque para que los correos hijos pongan su contenido #}
-                {% block body %}{% endblock %}
-            </section>
-        </td>
-        <td width="10px"></td>
-    </tr>
-</table>
-<table style="background: #000000; color: white; font-size: .7em; text-align: center; width: 500px;margin: 0 auto;">
-    <tr>
-        <td height="3px"></td>
-        <td height="3px"></td>
-        <td height="3px"></td>
-    </tr>
-    <tr>
-        <td width="10px"></td>
-        <td>
-            <span>Aplicación <strong>Infotaller</strong> {{date()|date('Y')}} </span>
-        </td>
-        <td width="10px"></td>
-    </tr>
-    <tr>
-        <td height="3px"></td>
-        <td height="3px"></td>
-        <td height="3px"></td>
-    </tr>
-</table>
+    <table style="background: #222; color: white; font-size: 2em; font-family: serif; font-style: italic; font-weight: bolder; text-align: center; width: 1100px;margin: 0 auto 20px auto; margin-top: 30px">
+        <tr>
+            <td height="3px"></td>
+            <td height="3px"></td>
+            <td height="3px"></td>
+        </tr>
+        <tr>
+            <td width="10px"></td>
+            <td>
+                <span>Infotaller</span>
+            </td>
+            <td width="10px"></td>
+        </tr>
+        <tr>
+            <td height="3px"></td>
+            <td height="3px"></td>
+            <td height="3px"></td>
+        </tr>
+    </table>
+    <table border="0" style="background: white; font-size: 1.2em; width: 1100px;margin: 0 auto; margin-top: 10px; margin-bottom: 20px">
+        <tr>
+            <td width="10px"></td>
+            <td>
+                <section>
+                    {# Bloque para que los correos hijos pongan su contenido #}
+                    {% block body %}{% endblock %}
+                </section>
+            </td>
+            <td width="10px"></td>
+        </tr>
+    </table>
+    <table style="background: rgba(0, 0, 0, .2); color: rgba(0, 0, 0, .7); font-size: 1em; text-align: center; width: 1100px;margin: 0 auto; ; margin-bottom: 30px">
+        <tr>
+            <td height="3px"></td>
+            <td height="3px"></td>
+            <td height="3px"></td>
+        </tr>
+        <tr>
+            <td width="10px"></td>
+            <td>
+                <span>Aplicación <strong>Infotaller</strong> {{date()|date('Y')}} </span>
+            </td>
+            <td width="10px"></td>
+        </tr>
+        <tr>
+            <td height="3px"></td>
+            <td height="3px"></td>
+            <td height="3px"></td>
+        </tr>
+    </table>
 </body>
 </html>

@@ -14,7 +14,8 @@
     {% embed 'layout/email.html.twig' %}
         {% block body %}
             <br/>
-            {{ 'registration.email.message' | trans({'%username%': user.username, '%confirmationUrl%': '<a href="'~confirmationUrl~'">'~confirmationUrl~'</a>'}, 'FOSUserBundle') | raw | nl2br }}
+            {% set confirm = 'menu.login' | trans %}
+            {{ 'registration.email.message' | trans({'%username%': user.username, '%confirmationUrl%': '<br /><br /><div style="text-align: center"><a href="'~confirmationUrl~'" style="padding: 15px 30px; background: green; color: white; font-size: 1.3em">' ~ confirm ~ '</a></div><br /><br />'}, 'FOSUserBundle') | raw | nl2br }}
             <br/>
         {% endblock %}
     {% endembed %}
