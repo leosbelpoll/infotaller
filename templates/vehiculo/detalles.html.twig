@@ -34,7 +34,7 @@
             <div class="panel-body">
                 <div class="fb-album-container">
                     {% for imagen in imagenes %}
-                        <img src="{{ asset(resources_url ~ imagen.name) }}" alt="Imagen" class="img-detalles" />
+                        <a href="{{ asset(resources_url ~ imagen.name) }}" target="_blank"><img src="{{ asset(resources_url ~ imagen.name) }}" alt="Imagen" class="img-detalles" /></a>
                     {% endfor %}
                 </div>
                 
