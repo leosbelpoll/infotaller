@@ -248,7 +248,7 @@ body {
   .table.tabla-ficha-tecnica{
     tr:nth-child(2n-1){
       th{
-        background: rgb(248, 248, 248);
+        background: linear-gradient(to right, #c9c9c9, white);
         width: 50%;
       }
     }
