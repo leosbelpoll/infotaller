@@ -694,6 +694,10 @@
                 <source>no.ficha.para.idioma</source>
                 <target>Para este idoma no se insertó ficha técnica, pruebe con otro idioma</target>
             </trans-unit>
+            <trans-unit id="3010053">
+                <source>ultimos.12.meses</source>
+                <target>Los últimos 12 meses</target>
+            </trans-unit>
 
 	</body>
 	</file>

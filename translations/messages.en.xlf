@@ -693,6 +693,10 @@
                 <source>no.ficha.para.idioma</source>
                 <target>For this language, do not insert technical sheet, try another language</target>
             </trans-unit>
+            <trans-unit id="3010053">
+                <source>ultimos.12.meses</source>
+                <target>The last 12 months</target>
+            </trans-unit>
 	</body>
 	</file>
 </xliff>

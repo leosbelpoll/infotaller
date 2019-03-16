@@ -690,6 +690,10 @@
                 <source>no.ficha.para.idioma</source>
                 <target>Pour cette langue, n'insérez pas de fiche technique, essayez une autre langue.</target>
             </trans-unit>
+            <trans-unit id="3010053">
+                <source>ultimos.12.meses</source>
+                <target>Les 12 derniers mois</target>
+            </trans-unit>
 
     </body>
 	</file>
