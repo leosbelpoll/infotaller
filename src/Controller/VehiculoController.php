@@ -50,7 +50,7 @@ class VehiculoController extends Controller
             $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Motocicleta';
             $archivos['apartado'] = $apartado;
-            $vehiculoObj = $em->getRepository('App:Vehiculo')->findMoto($vehiculo);
+            $vehiculoObj = $em->getRepository('App:Vehiculo')->findOneById($vehiculo);
             
             if(!$vehiculoObj){
                 throw $this->createNotFoundException('appdespiece.vehiculo.no.encontrado');
@@ -73,76 +73,49 @@ class VehiculoController extends Controller
         $annos = [];
 
         $em = $this->getDoctrine()->getManager('despiece');
-        $vehiculos = $em->getRepository('App:Vehiculo')->findAllPorClase($clase);
-        if($vehiculo){
-            $vehiculoObj = $em->getRepository('App:Vehiculo')->find($vehiculo);
-            
-            if(!$vehiculoObj){
-                throw $this->createNotFoundException('appdespiece.vehiculo.no.encontrado');
-            }
-        }
-
-        foreach($vehiculos as $v){
-            if(!in_array($v->getMarca(), $marcas)){
-                if($vehiculo){
-                    if($vehiculoObj->getMarca() !== $v->getMarca()){
-                        $marcas[] = $v->getMarca();
-                    }
-                }else{
+        if ($vehiculo != null) {
+            $vehiculos = $em->getRepository('App:Vehiculo')->findAllPorClase($clase);
+            foreach($vehiculos as $v){
+                if(!in_array($v->getMarca(), $marcas)){
                     $marcas[] = $v->getMarca();
                 }
             }
-            if(!in_array($v->getTipo(), $tipos)){
-                if($vehiculo){
-                    if($vehiculoObj->getTipo() != $v->getTipo()){
-                        $tipos[] = $v->getTipo();
-                    }
-                }else{
+            $vehiculoObj = $em->getRepository('App:Vehiculo')->findOneById($vehiculo);
+            $tipos = $em->getRepository('App:Vehiculo')->findTiposPorMarca($vehiculoObj->getMarca()->getId());
+            $modelosObj = $em->getRepository('App:Vehiculo')->findModelosPorTipo($vehiculoObj->getTipo()->getId());
+            foreach($modelosObj as $v){
+                $modelos[] = $v['modelo'];
+            }
+            $annosObj = $em->getRepository('App:Vehiculo')->findAnnosPorModelo($vehiculoObj->getModelo());
+            foreach($annosObj as $v){
+                $annos[] = $v['fechaInicio'];
+            }
+        } else {
+            $vehiculos = $em->getRepository('App:Vehiculo')->findAllPorClase($clase);
+
+            foreach($vehiculos as $v){
+                if(!in_array($v->getMarca(), $marcas)){
+                    $marcas[] = $v->getMarca();
+                }
+                if(!in_array($v->getTipo(), $tipos)){
                     $tipos[] = $v->getTipo();
                 }
-            }
-            if(!in_array($v->getModelo(), $modelos)){
-                if($vehiculo){
-                    if($vehiculoObj->getModelo() != $v->getModelo()){
-                        $modelos[] = $v->getModelo();
-                    }
-                }else{
+                if(!in_array($v->getModelo(), $modelos)){
                     $modelos[] = $v->getModelo();
-                }
-            }   
-            if(!in_array($v->getCreacion()->format('Y'), $annos)){
-                if($vehiculo){
-                    if($vehiculoObj->getCreacion()->format('Y') != $v->getCreacion()->format('Y')){
-                        $annos[] = $v->getCreacion()->format('Y');
-                    }
-                }else{
-                    $annos[] = $v->getCreacion()->format('Y');
+                }   
+                if(!in_array($v->getCreacion()->format('Y'), $annos)){
+                    $annos[] = $v->getFechaInicio();
                 }
             }
         }
-
-
-        if($vehiculo != null){
-            $vehiculoObj = $em->getRepository('App:Vehiculo')->find($vehiculo);
-
-            if(!$vehiculoObj){
-                throw $this->createNotFoundException('appdespiece.vehiculo.no.encontrado');
-            }
-
-            return $this->render('vehiculo/filtro.html.twig', [
-                'marcas' => $marcas,
-                'tipos' => $tipos,
-                'modelos' => $modelos,
-                'annos' => $annos,
-                'vehiculo'  => $vehiculoObj
-        ]);
-        }
+        
 
         return $this->render('vehiculo/filtro.html.twig', [
             'marcas' => $marcas,
             'tipos' => $tipos,
             'modelos' => $modelos,
             'annos' => $annos,
+            'vehiculo' => $vehiculo,
         ]);
     }
 

@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %} {% block stylesheets %}{% endblock %} {% block body %}
 <div class="container">
-
     {{ render(controller('App\\Controller\\VehiculoController::filtroAction', {clase:clase_vehiculo, vehiculo: vehiculo is defined ? vehiculo.id : null})) }}
-
     <br/>
 
     <div id="div_busqueda_vehiculos">
@@ -14,13 +12,14 @@
 {% endblock %}
 
 {% block javascripts %}
-
+<script>
+$(function() {
 {#
     Este bloque hace que si se selecciono en la vista principal algun criterio especifico,
         la pagina haga un scroll automatico hasta esa seccion especifica
 #}
-{% if apartado is defined %}
-    <script>
+    {% if apartado is defined %}
+        
         switch ('{{apartado}}'){
             case '0':
                 $("html, body").animate({scrollTop: $('#collapseImagenes').offset().top - 90});
@@ -47,11 +46,8 @@
                 $("html, body").animate({scrollTop: $('#collapseFichaTecnica').offset().top - 90});
                 break;
         }
-    </script>
-{% endif %}
-
-
-<script>
+        
+    {% endif %}
     
     {# Controlo si clickea algun manual que lo abra en una nueva pestanna el pdf #}
     $(document).on('click', 'a.manual-detalles', function (e) {
@@ -79,6 +75,7 @@
         }).success(function (data) {
             {# Si llegan bien los renderizo en la pagina #}
             $('#div_busqueda_vehiculos').html(data);
+            $('#div_busqueda_vehiculos').find('.collapse').first().addClass('in');
         }).error(function (error) {
             {# Si ocurre aglgun error, muestro una alerta de error #}
             alertify.error('{{ 'error.servidor' | trans }}');
@@ -93,7 +90,7 @@
         Cuando se cambia la marca la mando al controlador y renderizo los tipos que me retorne
             - Si se selecciona el valor "Marca" se resetean los valores dependientes
     #}
-    $('#marca_vehiculo').change(function (e){
+    $('#marca_vehiculo').change(function (e, firstTime){
         if($(this).val() == '-1'){
             $('#tipo_vehiculo')
                 .val('-1')
@@ -135,7 +132,7 @@
         Cuando se cambia el tipo lo mando al controlador y renderizo los modelos que me retorne
             - Si se selecciona el valor "Tipo" se resetean los valores dependientes
     #}
-    $('#tipo_vehiculo').change(function (e){
+    $('#tipo_vehiculo').change(function (e, firstTime){
         if($(this).val() == '-1'){
             $('#modelo_vehiculo')
                 .val('-1')
@@ -172,7 +169,7 @@
         Cuando se cambia el modelo lo mando al controlador y renderizo los annos que me retorne
             - Si se selecciona el valor "Modelo" se resetean los valores dependientes
     #}
-    $('#modelo_vehiculo').change(function (e){
+    $('#modelo_vehiculo').change(function (e, firstTime){
         if($(this).val() == '-1'){
             $('#anno_vehiculo')
                 .val('-1')
@@ -200,4 +197,13 @@
         }
     });
 
-</script> {% endblock %}
+    {% if vehiculo is defined %}
+        $('#marca_vehiculo').val('{{vehiculo.marca.id}}');
+        $('#tipo_vehiculo').val('{{vehiculo.tipo.id}}');
+        $('#modelo_vehiculo').val('{{vehiculo.modelo}}');
+        $('#anno_vehiculo').val('{{vehiculo.fechaInicio}}');
+    {% endif %}
+   
+});
+</script>
+{% endblock %}

@@ -1,47 +1,44 @@
 {# 
     Formulario de filtro de vehiculo
+#}
+<div class="filtroVehiculos">
+    <form id="form_busqueda_vehiculos" method="post" action="{{ path('busquedaVehiculos') }}">
+        <select name="marca_vehiculo" id="marca_vehiculo">
+            <option value="-1">{{ 'marca' | trans }}</option>
+            {% for marca in marcas %}
+            <option value="{{ marca.id }}">{{ marca.name }}</option>
+            {% endfor %}
+        </select>
 
-        la idea de este formulario es que no permita al usuario seleccionar combinaciones de vehiculos inexistentes
- #}
-
-{# Si no llegan marcas muestro cartel de que no existen vehiculos ya que es el criterio de busqueda mas general #}
-{% if vehiculo is not defined %}
-    {% if marcas | length == 0 %}
-    <h2 class="texto-grande">{{'no.hay.resultados' | trans}}</h2>
-    <hr>
-
-    {% else %}
-
-    <div class="filtroVehiculos">
-        <form id="form_busqueda_vehiculos" method="post" action="{{ path('busquedaVehiculos') }}">
-            <select name="marca_vehiculo" id="marca_vehiculo">
-                {% if vehiculo is defined %}
-                    <option value="{{ vehiculo.marca.id }}">{{ vehiculo.marca.name }}</option>
-                {% else %}
-                    <option value="-1">{{ 'marca' | trans }}</option>
-                {% endif %}
-                {% for marca in marcas %}
-                <option value="{{ marca.id }}">{{ marca.name }}</option>
+        <select name="tipo_vehiculo" id="tipo_vehiculo" {% if vehiculo is null %}disabled{% endif %}>
+            <option value="-1">{{ 'tipo' | trans }}</option>
+            {% if vehiculo is not null %}
+                {% for tipo in tipos %}
+                <option value="{{ tipo.id }}">{{ tipo.name }}</option>
                 {% endfor %}
-            </select>
+            {% endif %}
+        </select>
 
-            <select name="tipo_vehiculo" id="tipo_vehiculo" disabled>
-                <option value="-1">{{ 'tipo' | trans }}</option>
-            </select>
+        <select name="modelo_vehiculo" id="modelo_vehiculo" {% if vehiculo is null %}disabled{% endif %}>
+            <option value="-1">{{ 'modelo' | trans }}</option>
+            {% if vehiculo is not null %}
+                {% for modelo in modelos %}
+                <option value="{{ modelo }}">{{ modelo }}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
 
-            <select name="modelo_vehiculo" id="modelo_vehiculo" disabled>
-                <option value="-1">{{ 'modelo' | trans }}</option>
-            </select>
+        <select name="anno_vehiculo" id="anno_vehiculo" {% if vehiculo is null %}disabled{% endif %}>
+            <option value="-1">{{ 'anno' | trans }}</option>
+            {% if vehiculo is not null %}
+                {% for anno in annos %}
+                <option value="{{ anno }}">{{ anno }}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
 
-            <select name="anno_vehiculo" id="anno_vehiculo" disabled>
-                <option value="-1">{{ 'anno' | trans }}</option>
-            </select>
-
-            <button class="btn btn-primary" id="btnBuscarVehiculos" disabled>
-                <i class="fa fa-search"></i> {{ 'buscar' | trans }}
-            </button>
-        </form>
-    </div>
-
-    {% endif %}
-{% endif %}
+        <button class="btn btn-primary" id="btnBuscarVehiculos" {% if vehiculo is null %}disabled{% endif %}>
+            <i class="fa fa-search"></i> {{ 'buscar' | trans }}
+        </button>
+    </form>
+</div>

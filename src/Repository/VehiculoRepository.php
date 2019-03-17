@@ -57,6 +57,7 @@ class VehiculoRepository extends EntityRepository
      * Encontrar los vehiculos que cumplan con los filtros especificados
      */
     public function findPorFiltro($marca, $tipo, $modelo, $anno){
+        
         $em = $this->getEntityManager('despiece');
         if($tipo == -1){
             // Si solo llega marca
@@ -124,7 +125,7 @@ class VehiculoRepository extends EntityRepository
      */
     public function findTiposPorMarca($marca){
         $em = $this->getEntityManager('despiece');
-        $consulta = $em->createQuery("SELECT t FROM App:Tipo t INNER JOIN App:Vehiculo v WITH t = v.tipo WHERE v.marca = :marca");
+        $consulta = $em->createQuery("SELECT t FROM App:Tipo t INNER JOIN App:Vehiculo v WITH t = v.tipo WHERE v.marca = :marca GROUP BY t");
         $consulta->setParameter('marca', $marca);
 
         return $consulta->getArrayResult();
@@ -135,7 +136,7 @@ class VehiculoRepository extends EntityRepository
      */
     public function findModelosPorTipo($tipo){
         $em = $this->getEntityManager('despiece');
-        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v INNER JOIN App:Tipo t WITH t = v.tipo WHERE t.id = :tipo");
+        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v INNER JOIN App:Tipo t WITH t = v.tipo WHERE t.id = :tipo GROUP BY v");
         $consulta->setParameter('tipo', $tipo);
 
         return $consulta->getArrayResult();
@@ -146,7 +147,7 @@ class VehiculoRepository extends EntityRepository
      */
     public function findAnnosPorModelo($modelo){
         $em = $this->getEntityManager('despiece');
-        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v WHERE v.modelo = :modelo");
+        $consulta = $em->createQuery("SELECT v FROM App:vehiculo v WHERE v.modelo = :modelo GROUP BY v");
         $consulta->setParameter('modelo', $modelo);
 
         return $consulta->getArrayResult();

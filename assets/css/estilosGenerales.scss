@@ -429,25 +429,33 @@ body {
   }
 
   .menus-programa {
-    margin: 0 auto;
     margin-bottom: 40px;
-    width: 70%;
+    text-align: center;
 
     .menu-programa {
       text-align: center;
       color: grey;
       display: inline-block;
-      margin-right: 70px;
+      margin-right: 50px;
       font-size: 1.4em;
       font-family: serif;
+      text-align: center;
+      padding: 20px;
 
       img {
         display: block;
+        margin: auto;
       }
 
       &:hover {
         text-decoration: none;
         color: #000000;
+      }
+
+      &.activo {
+        background: rgb(236, 236, 236);
+        border: solid 1px rgb(221, 221, 221);
+        border-radius: 5px;
       }
     }
   }
