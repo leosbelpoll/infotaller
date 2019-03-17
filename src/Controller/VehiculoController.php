@@ -273,7 +273,7 @@ class VehiculoController extends Controller
             }
 
             if (in_array(strtolower($ext), ['webm', 'mkv', 'flv', 'vob', 'ogv', 'ogg', 'gif', 'avi', 'mov', 'wmv', 'rmvb', 'mp4', 'mpg', 'mpeg', 'm2v', '3gp'])) {
-                $archivo->type = 'img';
+                $archivo->type = 'video';
             }
             
             if ($archivo->getTipo() === 'Video' && strpos($archivo->getName(), 'url#') !== false) {
