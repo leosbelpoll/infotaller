@@ -11,7 +11,7 @@ class FileRepository extends EntityRepository
     public function findImagenVehiculo($vehiculo){
         $em = $this->getEntityManager('despiece');
 
-        $consulta = $em->createQuery('SELECT f FROM App:File f WHERE f.tipo = \'Imágenes\' AND f.vehiculo = :vehiculo');
+        $consulta = $em->createQuery('SELECT f FROM App:File f WHERE f.tipo = \'Imágenes\' AND f.vehiculo = :vehiculo ORDER BY f.id');
         $consulta->setParameter('vehiculo', $vehiculo);
         $consulta->setMaxResults(1);
 
