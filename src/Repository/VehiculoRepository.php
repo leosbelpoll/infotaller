@@ -101,7 +101,7 @@ class VehiculoRepository extends EntityRepository
         $fecha->modify($tiempo);
         $em = $this->getEntityManager('despiece');
 
-        $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha ORDER BY v.creacion DESC');
+        $consulta = $em->createQuery('SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha AND v.estado = \'new\' ORDER BY v.creacion DESC');
         $consulta->setParameter('fecha', $fecha);
         return $consulta->getResult();
     }
@@ -114,7 +114,7 @@ class VehiculoRepository extends EntityRepository
         $fecha->modify($tiempo);
         $em = $this->getEntityManager('despiece');
 
-        $consulta = $em->createQuery("SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha AND v.estado = 'actualizado' ORDER BY v.creacion DESC");
+        $consulta = $em->createQuery("SELECT v FROM App:Vehiculo v WHERE v.creacion > :fecha AND v.estado = 'edited' ORDER BY v.creacion DESC");
         $consulta->setParameter('fecha', $fecha);
         return $consulta->getResult();
     }
