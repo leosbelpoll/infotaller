@@ -24,11 +24,11 @@
 
                 <form class="pull-right">
                     <select name="selectTiempoVehiculosSubidos" id="selectTiempoVehiculosSubidos" class="form-control">
+                        <option value="-12 month">{{ 'ultimos.12.meses' | trans }}</option>
                         <option value="-30 day">{{ 'ultimos.30.dias' | trans }}</option>
                         <option value="-60 day">{{ 'ultimos.60.dias' | trans }}</option>
                         <option value="-3 month">{{ 'ultimos.3.meses' | trans }}</option>
                         <option value="-6 month">{{ 'ultimos.6.meses' | trans }}</option>
-                        <option value="-12 month">{{ 'ultimos.12.meses' | trans }}</option>
                     </select>
                 </form>
 
@@ -36,7 +36,7 @@
                 <hr/>
 
                 <div id="divVehiculosSubidos">
-                    {{ render(controller('App\\Controller\\VehiculoController::vehiculosSubidosAction', {tiempo: '-30 day'})) }}
+                    {{ render(controller('App\\Controller\\VehiculoController::vehiculosSubidosAction', {tiempo: '-12 month'})) }}
                 </div>
 
                 <br/>
@@ -50,11 +50,11 @@
                 <form class="pull-right">
                     <select name="selectTiempoVehiculosActualizados" id="selectTiempoVehiculosActualizados"
                             class="form-control">
+                        <option value="-12 month">{{ 'ultimos.12.meses' | trans }}</option>
                         <option value="-30 day">{{ 'ultimos.30.dias' | trans }}</option>
                         <option value="-60 day">{{ 'ultimos.60.dias' | trans }}</option>
                         <option value="-3 month">{{ 'ultimos.3.meses' | trans }}</option>
                         <option value="-6 month">{{ 'ultimos.6.meses' | trans }}</option>
-                        <option value="-12 month">{{ 'ultimos.12.meses' | trans }}</option>
                     </select>
                 </form>
 
@@ -62,7 +62,7 @@
                 <hr/>
 
                 <div id="divVehiculosActualizados">
-                    {{ render(controller('App\\Controller\\VehiculoController::vehiculosActualizadosAction', {tiempo: '-30 day'})) }}
+                    {{ render(controller('App\\Controller\\VehiculoController::vehiculosActualizadosAction', {tiempo: '-12 month'})) }}
                 </div>
             </div>
 
