@@ -268,7 +268,7 @@ class VehiculoController extends Controller
 
             $archivo->type = 'doc';
             
-            if (in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff', 'tga'])) {
+            if (in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'psd', 'tiff', 'tga', 'tif'])) {
                 $archivo->type = 'img';
             }
 
