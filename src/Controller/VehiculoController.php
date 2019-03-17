@@ -64,7 +64,7 @@ class VehiculoController extends Controller
                     $apartado = 5;
                 } else if (count($archivos['catalogos']) > 0) {
                     $apartado = 6;
-                } else if (count($archivos['fichaTecnica']) > 0) {
+                } else if ($archivos['fichaTecnica'] != null) {
                     $apartado = 7;
                 } 
             }
