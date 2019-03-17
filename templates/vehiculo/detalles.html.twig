@@ -52,28 +52,18 @@
         </div>
         <div id="collapseManualesTaller" class="panel-collapse collapse {% if apartado is defined and apartado == 1 %} in {% endif %}">
             <div class="panel-body">
-                {% if manualesTaller.ingles is defined %}
+                {% for idioma, data in manualesTaller %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for manual in manualesTaller.ingles %}
+                {% for manual in data %}
                 <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
                     <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
-                {% endfor %} {% endif %} {% if manualesTaller.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for manual in manualesTaller.espannol %}
-                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
-                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
-                    <span>{{ manual.titulo }}</span>
-                </a>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -88,28 +78,18 @@
         </div>
         <div id="collapseManualesUsuario" class="panel-collapse collapse {% if apartado is defined and apartado == 2 %} in {% endif %}">
             <div class="panel-body">
-                {% if manualesUsuario.ingles is defined %}
+                {% for idioma, data in manualesUsuario %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for manual in manualesUsuario.ingles %}
+                {% for manual in data %}
                 <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
                     <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
                     <span>{{ manual.titulo }}</span>
                 </a>
-                {% endfor %} {% endif %} {% if manualesUsuario.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for manual in manualesUsuario.espannol %}
-                <a target="_blank" href="{{ asset(resources_url ~ manual.name) }}" class="manual-detalles">
-                    <img src="{{ manual.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ manual.name) }}" alt="Manual" />
-                    <span>{{ manual.titulo }}</span>
-                </a>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -124,36 +104,26 @@
         </div>
         <div id="collapseEsquemasElectricos" class="panel-collapse collapse {% if apartado is defined and apartado == 3 %} in {% endif %}">
             <div class="panel-body">
-                {% if esquemasElectricos.ingles is defined %}
+                {% for idioma, data in esquemasElectricos %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for esquema in esquemasElectricos.ingles %}
+                {% for esquema in data %}
                 <div class="img-bg-detalles">
                     <a target="_blank" href="{{ asset(resources_url ~ esquema.name) }}">
                         <img src="{{ esquema.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ esquema.name) }}" alt="Esquema" />
                         <span>{{ esquema.titulo }}</span>
                     </a>
                 </div>
-                {% endfor %} {% endif %} {% if esquemasElectricos.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for esquema in esquemasElectricos.espannol %}
-                <div class="img-bg-detalles">
-                    <a target="_blank" href="{{ asset(resources_url ~ esquema.name) }}">
-                        <img src="{{ esquema.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ esquema.name) }}" alt="Esquema" />
-                        <span>{{ esquema.titulo }}</span>
-                    </a>
-                </div>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
-    {% endif %} {% if despieces|length != 0 %}
+    {% endif %}
+    
+    {% if despieces|length != 0 %}
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -164,36 +134,26 @@
         </div>
         <div id="collapseDespieces" class="panel-collapse collapse {% if apartado is defined and apartado == 4 %} in {% endif %}">
             <div class="panel-body">
-                {% if despieces.ingles is defined %}
+                {% for idioma, despieceIdioma in despieces %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for despiece in despieces.ingles %}
+                {% for despiece in despieceIdioma %}
                 <div class="img-bg-detalles">
                     <a target="_blank" href="{{ asset(resources_url ~ despiece.name) }}">
                         <img src="{{ despiece.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ despiece.name) }}" alt="Despiece" />
                         <span>{{ despiece.titulo }}</span>
                     </a>
                 </div>
-                {% endfor %} {% endif %} {% if despieces.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for despiece in despieces.espannol %}
-                <div class="img-bg-detalles">
-                    <a target="_blank" href="{{ asset(resources_url ~ despiece.name) }}">
-                        <img src="{{ despiece.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ despiece.name) }}" alt="Despiece" />
-                        <span>{{ despiece.titulo }}</span>
-                    </a>
-                </div>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
-    {% endif %} {% if videos|length != 0 %}
+    {% endif %}
+    
+    {% if videos|length != 0 %}
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -204,32 +164,20 @@
         </div>
         <div id="collapseVideos" class="panel-collapse collapse {% if apartado is defined and apartado == 5 %} in {% endif %}">
             <div class="panel-body">
-                {% if videos.ingles is defined %}
+                {% for idioma, data in videos %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for video in videos.ingles %}
+                {% for video in data %}
                 <div class="manual-detalles">
                     <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
                         <img src="{{ video.type == 'img' ? asset(resources_url ~ video.name) : asset('img/iconoVideo.png') }}" alt="Video" />
                         <span>{{ video.titulo }}</span>
                     </a>
                 </div>
-                {% endfor %} {% endif %} {% if videos.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for video in videos.espannol %}
-                <div class="manual-detalles">
-                    <a target="_blank" href="{{ video.type == 'videoUrl' ? asset(video.name) : asset(resources_url ~ video.name) }}">
-                        <img src="{{ video.type == 'img' ? asset(resources_url ~ video.name) : asset('img/iconoVideo.png') }}" alt="Video" />
-                        <span>{{ video.titulo }}</span>
-                    </a>
-                </div>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -244,32 +192,20 @@
         </div>
         <div id="collapseCatalogos" class="panel-collapse collapse {% if apartado is defined and apartado == 6 %} in {% endif %}">
             <div class="panel-body">
-                {% if catalogos.ingles is defined %}
+                {% for idioma, data in catalogos %}
                 <div class="cabecera-idioma">
-                    <h4>English</h4>
+                    <h4>{{idioma | trans}}</h4>
                     <hr/>
                 </div>
-                {% for catalogo in catalogos.ingles %}
+                {% for catalogo in data %}
                 <div class="manual-detalles">
                     <a target="_blank" href="{{ asset(resources_url ~ catalogo.name) }}">
                         <img src="{{ catalogo.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ catalogo.name) }}" alt="Catálogo" />
                         <span>{{ catalogo.titulo }}</span>
                     </a>
                 </div>
-                {% endfor %} {% endif %} {% if catalogos.espannol is defined %}
-                <div class="cabecera-idioma">
-                    <h4>Español</h4>
-                    <hr/>
-                </div>
-                {% for catalogo in catalogos.espannol %}
-                <div class="manual-detalles">
-                    <a target="_blank" href="{{ asset(resources_url ~ catalogo.name) }}">
-                        <img src="{{ catalogo.type == 'doc' ? asset('img/iconoPDF.png') : asset(resources_url ~ catalogo.name) }}" alt="Catálogo" />
-                        <span>{{ catalogo.titulo }}</span>
-                    </a>
-                </div>
-                {% endfor %} {% endif %}
-
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>

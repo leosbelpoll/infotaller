@@ -140,6 +140,24 @@ class File
      */
     public function getIdioma()
     {
+        switch ($this->idioma) {
+            case 'Spanish':
+                return 'language.es';
+            case 'English':
+                return 'language.en';
+            case 'Francés':
+                return 'language.fr';
+            case 'Alemán':
+                return 'language.al';
+            case 'Portugués':
+                return 'language.pt';
+            case 'Catalán':
+                // TODO: cuando se annada el idioma de catalan al trabajo de ficha se retorna aqui en vez de espannol
+                return 'language.es';
+                // return 'language.ca';
+            default:
+                return 'language.es';
+        }
         return $this->idioma;
     }
 

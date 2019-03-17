@@ -295,118 +295,22 @@ class VehiculoController extends Controller
                     $imagenes[] = $archivo;
                     break;
                 case 'Manuales taller':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $manualesTaller['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $manualesTaller['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $manualesTaller['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $manualesTaller['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $manualesTaller['portuges'][] = $archivo;
-                            break;
-                    }
+                    $manualesTaller[$archivo->getIdioma()][] = $archivo;
                     break;
                 case 'Manual usuario':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $manualesUsuario['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $manualesUsuario['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $manualesUsuario['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $manualesUsuario['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $manualesUsuario['portuges'][] = $archivo;
-                            break;
-                    }
+                    $manualesUsuario[$archivo->getIdioma()][] = $archivo;
                     break;
                 case 'Esquema eléctrico':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $esquemasElectricos['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $esquemasElectricos['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $esquemasElectricos['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $esquemasElectricos['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $esquemasElectricos['portuges'][] = $archivo;
-                            break;
-                    }
+                    $esquemasElectricos[$archivo->getIdioma()][] = $archivo;
                     break;
                 case 'Despiece':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $despieces['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $despieces['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $despieces['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $despieces['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $despieces['portuges'][] = $archivo;
-                            break;
-                    }
+                    $despieces[$archivo->getIdioma()][] = $archivo;
                     break;
                 case 'Video':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $videos['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $videos['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $videos['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $videos['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $videos['portuges'][] = $archivo;
-                            break;
-                    }
+                    $videos[$archivo->getIdioma()][] = $archivo;
                     break;
                 case 'Catálogo':
-                    switch ($archivo->getIdioma()) {
-                        case 'English':
-                            $catalogos['ingles'][] = $archivo;
-                            break;
-                        case 'Spanish':
-                            $catalogos['espannol'][] = $archivo;
-                            break;
-                        case 'French':
-                            $catalogos['frances'][] = $archivo;
-                            break;
-                        case 'Catalan':
-                            $catalogos['catalan'][] = $archivo;
-                            break;
-                        case 'Portuges':
-                            $catalogos['portuges'][] = $archivo;
-                            break;
-                    }
+                    $catalogos[$archivo->getIdioma()][] = $archivo;
                     break;
             }
         }
@@ -463,11 +367,15 @@ class VehiculoController extends Controller
             case 'en':
                 return 'English';
             case 'fr':
-                return 'Frances';
+                return 'Francés';
             case 'pt':
-                return 'Portugues';
+                return 'Portugués';
+            case 'al':
+                return 'Alemán';
             case 'ca':
-                return 'Catala';
+                // TODO: cuando se annada el idioma de catalan al trabajo de ficha se retorna aqui en vez de espannol
+                return 'Spanish';
+                // return 'Catalán';
             default:
                 return 'Spanish';
         }

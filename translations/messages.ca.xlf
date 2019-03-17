@@ -694,6 +694,31 @@
                 <source>ultimos.12.meses</source>
                 <target>Els últims 12 mesos</target>
             </trans-unit>
+            <!-- Languages -->
+            <trans-unit id="3010054">
+                <source>language.es</source>
+                <target>Espanyol</target>
+            </trans-unit>
+            <trans-unit id="3010055">
+                <source>language.en</source>
+                <target>Anglès</target>
+            </trans-unit>
+            <trans-unit id="3010056">
+                <source>language.fr</source>
+                <target>Francès</target>
+            </trans-unit>
+            <trans-unit id="3010057">
+                <source>language.pt</source>
+                <target>Portuguès</target>
+            </trans-unit>
+            <trans-unit id="3010058">
+                <source>language.ca</source>
+                <target>Català</target>
+            </trans-unit>
+            <trans-unit id="3010059">
+                <source>language.al</source>
+                <target>Alemany</target>
+            </trans-unit>
 
 
         </body>
