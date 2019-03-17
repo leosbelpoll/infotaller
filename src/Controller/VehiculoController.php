@@ -49,6 +49,25 @@ class VehiculoController extends Controller
             $em = $this->getDoctrine()->getManager('despiece');
             $archivos = $this->getArchivos($vehiculo, $request->getLocale());
             $archivos['clase_vehiculo'] = 'Motocicleta';
+            if ($apartado == -1) {
+                if (count($archivos['imagenes']) > 0) {
+                    $apartado = 0;
+                } else if (count($archivos['manualesTaller']) > 0) {
+                    $apartado = 1;
+                } else if (count($archivos['manualesUsuario']) > 0) {
+                    $apartado = 2;
+                } else if (count($archivos['esquemasElectricos']) > 0) {
+                    $apartado = 3;
+                } else if (count($archivos['despieces']) > 0) {
+                    $apartado = 4;
+                } else if (count($archivos['videos']) > 0) {
+                    $apartado = 5;
+                } else if (count($archivos['catalogos']) > 0) {
+                    $apartado = 6;
+                } else if (count($archivos['fichaTecnica']) > 0) {
+                    $apartado = 7;
+                } 
+            }
             $archivos['apartado'] = $apartado;
             $vehiculoObj = $em->getRepository('App:Vehiculo')->findOneById($vehiculo);
             
