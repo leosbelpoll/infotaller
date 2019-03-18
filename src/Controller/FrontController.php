@@ -35,9 +35,10 @@ class FrontController extends AbstractController
     /**
      * Este metodo recibe el grupo y la pagina del programa
      *  - si no llega ninguno renderizo la plantilla general de programas
-     *  - si llega solo el grupo renderizo la plantilla del grupo
+     *  - si llega solo el grupo renderizo el primero de los menus
      *  - si llegan los dos intento renderizar la vista que esta en la carpeta de programas/grupo/pagina
      *      - si no lo encuentra renderizo una vista explicando lo que hay que hacer para agregar ese nuevo programa
+     *
      * 
      * @Route("/program/{grupo}/{pagina}", name="program", defaults={"grupo": null, "pagina": null})
      */
@@ -48,7 +49,23 @@ class FrontController extends AbstractController
         }
 
         if (!$pagina) {
-            return $this->render('layout/programa/' . $grupo . '.html.twig', []);
+            switch ($grupo) {
+                case "configuracion":
+                    $pagina = "registro_vehiculos";
+                    break;
+                case "archivos":
+                    $pagina = "clientes";
+                    break;
+                case "facturacion":
+                    $pagina = "factura";
+                    break;
+                case "herramientas":
+                    $pagina = "calendario";
+                    break;
+            }
+            // Si quiere renderizar solo la plantilla del programa especifico invierta la ejecucion de las siguientes dos lineas
+            // return $this->render('layout/programa/' . $grupo . '.html.twig', []);
+            return $this->redirect($this->generateUrl('program', ['grupo'=>$grupo, 'pagina'=>$pagina]));
         }
         try{
             return $this->render('programa/' . $grupo . '/' . $pagina . '.html.twig', []);
