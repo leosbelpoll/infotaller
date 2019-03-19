@@ -33,11 +33,16 @@
 
 {# Valido con recaptcha v3 #}
 {% block javascripts %}
+    {# {{ encore_entry_script_tags('js/pantallaCargando') }} #}
     <script src="https://www.google.com/recaptcha/api.js?hl={{app.request.locale}}&render={{recaptcha}}"></script>
     <script>
         grecaptcha.ready(function() {
-            grecaptcha.execute('{{recaptcha}}', {action: 'register'}).then(function(token) {
+            grecaptcha.execute('{{recaptcha}}', {action: 'register'})
+            .then(function(token) {
                 $('#g-recaptcha-response').val(token);
+            }, function(error) {
+                console.error("Error obteniendo el recaptcha: ", error);
+                alertify.alert("<div style='padding: 10px'><p>Ha ocurrido un error con el Recatcha, se va a reiniciar la pagina.</p><p>Disculpe las molestias</p></div>", function (){location.reload();});
             });
         });
     </script>

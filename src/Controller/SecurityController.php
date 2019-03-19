@@ -54,11 +54,11 @@ class SecurityController extends Controller
                 case 'register':
                     return $this->registrationController->registerAction($request);
                 default:
-                    throw new \Exception();
+                    throw new \Exception("Recaptacha error: Action invalida");
             }
             
         }
 
-        throw new \Exception();
+        throw new \Exception("Recaptacha error: " . $result['error-codes'][0]);
     }
 }
