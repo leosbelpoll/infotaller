@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav">
                 {# Pregunto lo que contiene la ruta actual para resaltar el menu especifico app.request.get('_route') #}
                 <li {% if app.request.get('_route') == 'portada' %}class="active"{% endif %}><a
-                            href="{{ path('portada') }}">{{ 'menu.inicio' | trans }}</a></li>
+                            href="{{ path('portada') }}">{{ 'menu.inicio' | trans | upper }}</a></li>
                 {# TODO: descomentar el menu de abajo cuando esten listos los coches #}
                 {# <li {% if app.request.get('_route') == 'coches' %}class="active"{% endif %}><a href="{{ path('coches') }}">{{ 'menu.coches' | trans | upper }}</a></li> #}
                 <li {% if app.request.get('_route') == 'motos' %}class="active"{% endif %}><a href="{{ path('motos') }}">{{ 'menu.motos' | trans | upper }}</a></li>
