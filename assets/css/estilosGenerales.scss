@@ -651,3 +651,17 @@ body .filtroVehiculos select[disabled] {
 }
 
 //  END PANTALLA CARGANDO
+
+// Carousel
+
+.carousel-indicators {
+  bottom: -20px;
+}
+
+.carousel-indicators li {
+  border-color: #222;
+}
+
+.carousel-indicators .active {
+  background: #222;
+}

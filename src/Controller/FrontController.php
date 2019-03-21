@@ -44,6 +44,10 @@ class FrontController extends AbstractController
      */
     public function programaAction(Request $request, $grupo = null, $pagina = null)
     {
+        if($request->getLocale() != 'es') {
+            return $this->redirect($this->generateUrl('portada', []));
+        }
+
         if(!$grupo and !$pagina){
             return $this->render('layout/programa.html.twig', []);
         }

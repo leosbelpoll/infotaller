@@ -21,8 +21,11 @@
                 {# TODO: descomentar el menu de abajo cuando esten listos los coches #}
                 {# <li {% if app.request.get('_route') == 'coches' %}class="active"{% endif %}><a href="{{ path('coches') }}">{{ 'menu.coches' | trans | upper }}</a></li> #}
                 <li {% if app.request.get('_route') == 'motos' %}class="active"{% endif %}><a href="{{ path('motos') }}">{{ 'menu.motos' | trans | upper }}</a></li>
+                {# Renderizo el menu programa solo si es espannol #}
+                {% if app.request.locale == 'es' %}
                  {# En este caso particular como hay muchas rutas que son de programa, solo pregunto por la primera parte de la ruta #}
                 <li {% if app.request.get('_route')[0:7] == 'program' %}class="active"{% endif %}><a href="{{ path('program') }}">{{ 'menu.software' | trans | upper }}</a></li>
+                {% endif %}
             </ul>
 
             {# Parte del menu que se visualiza en la parte derecha #}
