@@ -30,14 +30,21 @@
         <a href="#" onclick="window.open('#')" class="btn btn-primary pull-right">{{ 'registrar.taller' | trans }}</a>
     </div>
     <div class="row">
-
+        {% set grupo = app.request.get('grupo') %}
+        {% if grupo is not null %}
         <div class="col-xs-2">
             {# Bloque donde las plantillas hijas de cada seccion van a poner las opciones especificas de la seccion #}
             {% block submenu %}{% endblock %}
         </div>
-        <div class="col-xs-10">
+        {% endif %}
+        <div class="{% if grupo is not null %}col-xs-10{% else %}col-xs-12{% endif %}">
             {# Bloque donde se va a renderizar el HTML del programa especifico #}
             {% block contenido %}
+                <div style="display: flex; justify-content: space-around; align-items: center">
+                    <img src="/img/menu_programa/layout/moto.jpg" width="20%" height="20%">
+                    <img src="/img/menu_programa/layout/quats.png" width="20%" height="20%">
+                    <img src="/img/menu_programa/layout/jet.jpg" width="20%" height="20%">
+                </div>
                 <p>Programa sencillo y rápido para la gestión de todos los trabajos realizados en nuestro taller de reparaciones de motos, ciclomotores, Jets y Quats.</p>
 
                 <p>El sistema de gestión de taller ha sido diseñado como una herramienta para nuestra gestión diaria, liberándonos de las cargas más pesadas, optimizando nuestros recursos y haciéndonos más productivos.</p> 
@@ -46,32 +53,59 @@
                 <p>Posibilidad de insertar tu logotipo y datos del taller en facturas, albaranes, presupuestos, partes de trabajo y ordenes de reparaciones.</p>
                 
                 <br />
-                <p>Tenemos en cuenta la venta de accesorios y repuestos en tienda o fuera de reparación, que se hacen sin estar ligadas a un vehículo y en las cuales ni siquiera tomamos nota del nombre del comprador. Para estas situaciones tenemos el formulario de factura simplificada o tickets para generar este tipo de documentos, separándolo de las reparaciones.</p>
+                <p>Tenemos en cuenta la venta de accesorios y repuestos en tienda o fuera de reparación, que se hacen sin estar ligadas a un vehículo y en las cuales ni siquiera tomamos nota del nombre del comprador. Para estas situaciones tenemos los tickets para generar este tipo de documentos, separándolo de las reparaciones. Ello conlleva una venta más ágil, con el consiguiente ahorro de tiempo y supone un ahorro de papel en casos en los que obviamente no es necesario imprimir un folio entero, pero que no se descuida el control. El seguimiento de las existencias (control de stock) se realiza de igual manera y en conjunción con los demás tipos de venta y los cobros se anotan y fiscalizan de forma automática.</p>
 
                 
                 <br />
-                <p>Ello conlleva una venta más ágil, con el consiguiente ahorro de tiempo, pero no se descuida el control. El seguimiento de las existencias (control de stock) se realiza de igual manera y en conjunción con los demás tipos de venta y los cobros se anotan y fiscalizan de forma automática. Finalmente, la impresión mediante impresora de tickets supone un ahorro de papel en casos en los que obviamente no es necesario imprimir un folio entero.</p>
-                
-                <br />
-                <p><strong>Lo mejor del programa</strong></p>
+                <h3><strong>Lo mejor del programa</strong></h3>
 
-                <p>Tendrás todos los datos de los vehículos que tengamos en nuestra base de datos. Los datos que puedes ver en infotaller.net estarán ya en las bases de datos de tu  programa. Cuando añadamos un vehículo, este se te añadirá a tu programa.</p>
+                <p>Tendrás todos los datos de los vehículos que tengamos en nuestra base de datos. Los datos que puedes ver en infotaller.net estarán ya en las bases de datos de tu programa. Cuando añadamos un vehículo, este se te añadirá a tu programa.</p>
 
                 <p>Te recordamos algunos de estos datos:</p>
 
                 <p>Despieces, Ficha técnica, esquemas eléctricos, manuales de reparación, etc..</p>
 
+                <div style="display: flex; justify-content: space-around; align-items: center">
+                    <img src="/img/menu_programa/layout/despiece.png" width="15%" height="15%">
+                    <img src="/img/menu_programa/layout/ficha_tecnica.png" width="15%" height="15%">
+                    <img src="/img/menu_programa/layout/esquema_electrico.jpg" width="15%" height="15%">
+                    <img src="/img/menu_programa/layout/manual_taller.png" width="15%" height="15%">
+                </div>
+
                 <br />
                 <p>Y porque no hablar del coste que te supone a ti!!, que realmente es lo que más te interesa. No hay precio por uso, ni por usuarios, ni por computadora, ni por datos de tráfico, ni por compra o alquiler. El único coste es por lo que tú guardas Mb/mes.</p>
 
-                <p><img src="/img/menu_programa/precio.png"></p>
-                
+                <p>
+                    <div style="text-align: center">
+                        <img src="/img/menu_programa/layout/precio.png" width="45%" height="45%"></p>
+                    </div>
                 <br />
-                <p><strong>Precio</strong></p>
+                <h4><strong>Precio</strong></h4>
 
-                <p>El precio de 1000Mb es de $10/mes, te imaginas cuanto puedes guardar en un 1000Mb!!</p>
+                <p>El precio de <strong>1.000.000Mb</strong> es de $10/mes, te imaginas cuanto puedes guardar en un <strong>1.000.000Mb!!</strong></p>
 
-                <p>Puedes almacenar tantos Mbs como quieras. Si solo as guardado 200Mb solo tendrás que pagar $2/mes.</p>
+                <p>Puedes almacenar tantos Mbs como quieras. Si solo as guardado 2000.000Mb solo tendrás que pagar <strong>$2</strong>/mes.</p>
+                
+                <br/>
+                <h4 style="text-decoration: underline"><strong>Configuración</strong></h4>
+
+                <br/>
+                <p>Registro de vehículos, es la pantalla que todo taller/mecánico necesita para tener siempre las documentaciones a mano, guardar las propias documentaciones, realizar documentaciones propias mediante fotografías. Te permite configurar los modelos de vehículos pensando en agilizar el trabajo de descripción de las reparaciones, para esto está dividida en varias partes.</p>
+
+                <br/>
+                <p>En la parte superior encontramos un combo en el cual se puede seleccionar varios tipos de vehículos, motocicletas quads y jets.</p>
+
+                <br/>
+                <p>Lo primero que nos encontramos es la configuración de marcas, la cual nos permite registrar nuevas marcas, adjuntar a cada marca su dirección de Internet y adjuntar el catálogo general de la marca.</p>
+
+                <br/>
+                <p>El siguiente registro a configurar es tipos de vehículos, aquí es donde podremos asignar diferentes tipos, tales como, de carretera, custom, scooter, Racing, etc...</p>
+
+                <br/>
+                <p>El siguiente parámetro a configurar es grupos de vehículos, este parámetro nos ayudará a distinguir los diferentes modelos teniendo en cuenta el motor que llevan, sea de un cilindro, de 2 cilindros, o más. Grupo de vehículos también nos ayudará para programar los tiempos de las reparaciones dependiendo del grupo que pertenezca el vehículo.</p>
+
+                <br/>
+                <p>Acto seguido nos encontramos con modelos, en el cual podemos seleccionar todos los parámetros anteriormente descritos y el año de fabricación. En modelos mediante el botón de la derecha configuraciones nos permite extender los datos sobre el modelo. por ejemplo nos permite adjuntar el manual de usuario, el catálogo del vehículo, la ficha técnica, también nos permite adjuntar el esquema eléctrico, el despiece del vehículo, así como manuales de reparación, también nos deja adjuntar imágenes del vehículo o imágenes del motor que nos pueden ayudar en el futuro a realizar las reparaciones.</p>
             {% endblock %}
         </div>
     </div>
