@@ -721,6 +721,94 @@
                 <target>Allemand</target>
             </trans-unit>
 
+
+
+            <!-- CAROUSEL -->
+
+            <!-- 1 -->
+            <trans-unit id="3010060">
+                <source>carousel.1.1</source>
+                <target>__strong__SSD Tb__/strong__ à __strong__ __red__$16__/red____/strong__/mois </target>
+            </trans-unit>
+            <trans-unit id="3010061">
+                <source>carousel.1.2</source>
+                <target>__strong__Ne paye que ce que vous stockez__/strong__</target>
+            </trans-unit>
+
+            <!-- 2 -->
+            <trans-unit id="3010062">
+                <source>carousel.2.1</source>
+                <target>Obtenez autant de disques __strong__SSD Tb__/strong__ que vous voulez</target>
+            </trans-unit>
+            <trans-unit id="3010063 ">
+                <source>carousel.2.2</source>
+                <target>pour seulement __strong__ __red__$12__/red____/strong__/mois pour __strong__Tb__/strong__</target>
+            </trans-unit>
+            
+            <!-- 3 -->
+            <trans-unit id="3010064">
+                <source>carousel.3.1</source>
+                <target>Ajoutez un disque __strong__SSD 4Tb __/strong__</target>
+            </trans-unit>
+            <trans-unit id="3010065">
+                <source>carousel.3.2</source>
+                <target>pour seulement __strong__ __red__$10__/red____/strong__/mois pour __strong__Tb__/strong__</target>
+            </trans-unit>
+            
+            <!-- 4 -->
+            <trans-unit id="3010066">
+                <source>carousel.4.1</source>
+                <target>Lorsque vous ajoutez un disque __strong__SSD__/strong__ de __strong__4Tb __/strong__ </target>
+            </trans-unit>
+            <trans-unit id="3010067">
+                <source>carousel.4.2</source>
+                <target>lorsque vous récupérez votre VPS,</target>
+            </trans-unit>
+            <trans-unit id="3010068">
+                <source>carousel.4.3</source>
+                <target>vous ne payez que __strong__ __red__$8__/red____/strong__/mois pour __strong__Tb__/strong__</target>
+            </trans-unit>
+            
+            <!-- 5 -->
+            <trans-unit id="3010069">
+                <source>carousel.5.1</source>
+                <target> __strong__ __red__$10__/red____/strong__/mois __strong__HDD Tb__/strong__</target>
+            </trans-unit>
+            <trans-unit id="3010070">
+                <source>carousel.5.2</source>
+                <target>__strong__Ne paie que pour ce que vous stockez__/strong__</target>
+            </trans-unit>
+
+            <!-- 6 -->
+            <trans-unit id="3010071">
+                <source>carousel.6.1</source>
+                <target>Obtenez autant de disques __strong__HDD Tb__/strong__ que vous voulez</target>
+            </trans-unit>
+            <trans-unit id="3010072">
+                <source>carousel.6.2</source>
+                <target>pour seulement __red__$6__/red____/strong__/mois pour la __strong__Tb__/strong__</target>
+            </trans-unit>
+
+            <!-- 7 -->
+            <trans-unit id="3010073">
+                <source>carousel.7.1</source>
+                <target>Ajoutez un disque __strong__HDD 12Tb __/strong__</target>
+            </trans-unit>
+            <trans-unit id="3010074">
+                <source>carousel.7.2</source>
+                <target>pour seulement __strong__ __red__$5__/red____/strong__/mois pour la __strong__Tb__/strong__</target>
+            </trans-unit>
+
+            <!-- 8 -->
+            <trans-unit id="3010075">
+                <source>carousel.8.1</source>
+                <target>En ajoutant un disque __strong__HDD__/strong__ de __strong__12Tb __/strong__ lorsque vous recevez votre VPS,</target>
+            </trans-unit>
+            <trans-unit id="3010076">
+                <source>carousel.8.2</source>
+                <target>vous ne payerez que __strong__ __red__$4__/red____/strong__ par mois pour la __strong__Tb__/strong__</target>
+            </trans-unit>
+
     </body>
 	</file>
 </xliff>

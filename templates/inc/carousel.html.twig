@@ -9,32 +9,97 @@
         <li data-target="#carousel-example-generic" data-slide-to="4"></li>
         <li data-target="#carousel-example-generic" data-slide-to="5"></li>
         <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="8"></li>
     </ol>
-
+    {% autoescape false %}
     <!-- imagenes del carousel -->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="{{ asset('img/carousel/Banner-Opt.png') }}" alt="Banner-Opt">
-        </div>
-        <div class="item">
-            <img src="{{ asset('img/carousel/unnamed-1.png') }}" alt="unnamed-1">
-        </div>
-        <div class="item">
-            <img src="{{ asset('img/carousel/unnamed-2.png') }}" alt="unnamed-2">
-        </div>
-        <div class="item">
-            <img src="{{ asset('img/carousel/unnamed-3.png') }}" alt="unnamed-3">
-        </div>
-        <div class="item">
-            <img src="{{ asset('img/carousel/unnamed-4.png') }}" alt="unnamed-4">
-        </div>
-        <div class="item">
-            <img src="{{ asset('img/carousel/unnamed-5.png') }}" alt="unnamed-5">
+            <img src="{{ asset('img/carousel/unnamed-8.png') }}" alt="Banner-Opt">
         </div>
         <div class="item">
             <img src="{{ asset('img/carousel/unnamed-6.png') }}" alt="unnamed-6">
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 25%">
+                <span>{{'carousel.1.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+                <br/>
+                <span>{{'carousel.1.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-4.png') }}" alt="unnamed-1">
+            {% if app.request.locale == 'fr' %}
+            <div style="position: absolute; top: 10%; left: 0; font-size: 1.6vw; font-family: serif; font-style: italic; text-align: center; padding-left: 30%">
+            {% else %}
+            <div style="position: absolute; top: 10%; left: 0; font-size: 1.8vw; font-family: serif; font-style: italic; text-align: center; padding-left: 35%">
+            {% endif %}
+                <span>{{'carousel.2.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.2.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-5.png') }}" alt="unnamed-5">
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 35%">
+                <span>{{'carousel.3.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.3.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-4.png') }}" alt="unnamed-4">
+            {% if app.request.locale in ['es', 'fr', 'pt'] %}
+            <div style="position: absolute; top: 1%; left: 0; font-size: 1.7vw; font-family: serif; font-style: italic; text-align: center; padding-left: 34%">
+            {% else %}
+            <div style="position: absolute; top: 10%; left: 0; font-size: 1.5vw; font-family: serif; font-style: italic; text-align: center; padding-left: 32%">
+            {% endif %}
+                <span>{{'carousel.4.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.4.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+                {% if app.request.locale in ['es', 'fr', 'pt'] %}
+                <br/>
+                <span>{{'carousel.4.3' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-6.png') }}" alt="unnamed-6">
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 25%">
+                <span>{{'carousel.5.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+                <br/>
+                <span>{{'carousel.5.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-3.png') }}" alt="unnamed-3">
+            {% if app.request.locale == 'fr' %}
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 25%">
+            {% else %}
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 35%">
+            {% endif %}
+                <span>{{'carousel.6.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.6.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-2.png') }}" alt="unnamed-2">
+            <div style="position: absolute; top: 10%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 31%">
+                <span>{{'carousel.7.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.7.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{ asset('img/carousel/unnamed-3.png') }}" alt="unnamed-3">
+            <div style="position: absolute; top: 6%; left: 0; font-size: 2vw; font-family: serif; font-style: italic; text-align: center; padding-left: 23%; padding-right: 30px">
+                <span>{{'carousel.8.1' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>'}) }}</span>
+                <br/>
+                <span>{{'carousel.8.2' | trans | replace({'__strong__': '<strong>', '__/strong__': '</strong>', '__red__': '<span style="color: red">', '__/red__': '</span>'}) }}</span>
+            </div>
         </div>
     </div>
+    {% endautoescape %}
 
     <!-- Controles laterales del carousel -->
     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
